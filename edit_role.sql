@@ -1,0 +1,1 @@
+UPDATE Users SET role = "R" WHERE UID = 1;

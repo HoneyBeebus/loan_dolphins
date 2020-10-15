@@ -1,6 +1,6 @@
 CREATE TABLE Analyses (
     AID INTEGER PRIMARY KEY,
-    UID INTEGER FOREIGN KEY,
+    UID INTEGER,
 	client VARCHAR(15),
 	run_Date DATE,
 	risk_Inherent CHAR(2),
