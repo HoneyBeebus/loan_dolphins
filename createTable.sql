@@ -1,10 +1,14 @@
-CREATE TABLE Classes (
-    class CHAR(15) PRIMARY KEY,
-    type CHAR(2) NOT NULL,
-    country CHAR(15),
-    numGuns INTEGER,
-    bore INTEGER,
-    displacement INTEGER
+CREATE TABLE Analyses (
+    UID INTEGER PRIMARY KEY,
+	client VARCHAR(15),
+	run_Date DATE,
+	risk_Inherent CHAR(2),
+	risk_Residual CHAR(2),
+	notes VARCHAR(280)
 );
 
-INSERT INTO Classes VALUES("Bismarck", "bb", "Germany", 8, 15, 42000);
+CREATE TABLE Users (
+	UID INTEGER PRIMARY KEY,
+	username VARCHAR(20),
+	role CHAR(1)
+);
