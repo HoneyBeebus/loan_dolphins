@@ -17,7 +17,7 @@ CREATE TABLE Analyses (
 	primaryLossMagnitudeControls INTEGER,
 	secondaryLossMagnitudeResponsiveInherent INTEGER,
 	secondaryLossMagnitudeResponsiveControls INTEGER,
-	notes VARCHAR(1000),
+	notes VARCHAR(1000)
 );
 
 CREATE TABLE Users (
