@@ -1,0 +1,3 @@
+DELETE FROM Analyses WHERE AID = 2;
+
+DELETE FROM Users WHERE UID = 2;
