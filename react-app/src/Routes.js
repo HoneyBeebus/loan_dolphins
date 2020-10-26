@@ -1,12 +1,11 @@
 import React from 'react';
-import { Route, Switch, Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Pages
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import ExamplePage from './pages/ExamplePage';
 import OutcomePage from './pages/OutcomePage';
-import history from './history';
 
 
 function Routes() {
