@@ -1,5 +1,28 @@
 import React from 'react';
-import { Button, TextField, Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
+import { DataGrid } from '@material-ui/data-grid';
+import './DashboardPage.css';
+
+const header = [
+	{field: "runDate", headerName: "Date", width: 120},
+	{field: "lossScenario", headerName: "Loss Scenario", width: 200},
+	{field: "overallResidualRisk", headerName: "Overall Residual Risk", width: 200},
+	{field: "potentialLossMagnitude", headerName: "Potential Loss Magnitude", width: 200}
+];
+
+// TODO: replace this with data pulled from the database
+const testData = [
+	{
+		id: 0, lossScenario: "abcdefg", runDate: "04-21-2019",
+		overallResidualRisk: "Very High",
+		potentialLossMagnitude: "$100,000 to $999,999"
+	}
+];
+for (var i = 1; i < 200; i++) {
+	testData.push(JSON.parse(JSON.stringify(testData[0])));
+	testData[i].id = i;
+	testData[i].customer += i;
+}
 
 class LoginPage extends React.Component {
 	constructor(props) {
@@ -12,29 +35,9 @@ class LoginPage extends React.Component {
 		return (<div>
 			<h1>Dashboard View</h1>
 			<span>Recent Entries</span> <TextField type="search" variant="outlined" /> <Button variant="contained">Search</Button>
-			<TableContainer component={Paper}>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<TableCell>Customer</TableCell>
-							<TableCell>Date of Request</TableCell>
-							<TableCell>Risk</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						<TableRow>
-							<TableCell>Ada Lovelace</TableCell>
-							<TableCell>04-21-2019</TableCell>
-							<TableCell>Very High</TableCell>
-						</TableRow>
-						<TableRow>
-							<TableCell>Ada Lovelace</TableCell>
-							<TableCell>04-21-2019</TableCell>
-							<TableCell>Very High</TableCell>
-						</TableRow>
-					</TableBody>
-				</Table>
-			</TableContainer>
+			<div class="Dashboard-grid">
+				<DataGrid id="Dashboard-grid" rows={testData} columns={header} />
+			</div>
 		</div>);
 	}
 }
