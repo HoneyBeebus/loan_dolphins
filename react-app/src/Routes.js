@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import ExamplePage from './pages/ExamplePage';
 import OutcomePage from './pages/OutcomePage';
+import MatrixPage from './pages/MatrixPage';
 
 
 function Routes() {
@@ -15,6 +16,7 @@ function Routes() {
 			<Route path="/dashboard" exact component={DashboardPage}/>
 			<Route path="/test" exact component={ExamplePage}/>
 			<Route path ="/outcome" exact component={OutcomePage}/>
+			<Route path="/matrix" exact component={MatrixPage}/>
 		</Switch>
 	);
 }
