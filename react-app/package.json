@@ -5,13 +5,16 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/data-grid": "^4.0.0-alpha.8",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@trendmicro/react-sidenav": "^0.5.0",
     "history": "^5.0.0",
-    "react": "^17.0.1",
+    "react": "^16.14.0",
+    "react-bootstrap-validation": "^0.1.11",
     "react-data-grid": "^7.0.0-canary.26",
-    "react-dom": "^17.0.0",
+    "react-dom": "^16.8.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4"
   },
