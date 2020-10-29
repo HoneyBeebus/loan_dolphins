@@ -7,6 +7,7 @@ import DashboardPage from './pages/DashboardPage';
 import ExamplePage from './pages/ExamplePage';
 import OutcomePage from './pages/OutcomePage';
 import MatrixPage from './pages/MatrixPage';
+import RiskPage from './pages/RiskPage';
 
 
 function Routes() {
@@ -17,6 +18,7 @@ function Routes() {
 			<Route path="/test" exact component={ExamplePage}/>
 			<Route path ="/outcome" exact component={OutcomePage}/>
 			<Route path="/matrix" exact component={MatrixPage}/>
+			<Route path="/risk" exact component={RiskPage}/>
 		</Switch>
 	);
 }
