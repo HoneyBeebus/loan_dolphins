@@ -95,11 +95,14 @@ function MatrixPage(){
 				onChange={handleChange}
 			>
 				<MenuItem value="">
-					<em>None</em>
+					<em>Overall Risk</em>
 				</MenuItem>
-				<MenuItem value={10}>Ten</MenuItem>
-				<MenuItem value={20}>Twenty</MenuItem>
-				<MenuItem value={30}>Thirty</MenuItem>
+				<MenuItem value={10}>Primary Risk</MenuItem>
+				<MenuItem value={20}>Secondary Risk</MenuItem>
+				<MenuItem value={30}>Loss Event Frequency</MenuItem>
+				<MenuItem value={40}>Vulnerabilty</MenuItem>
+				<MenuItem value={50}>Secondary Loss Event Frequency</MenuItem>
+				<MenuItem value={60}>Overall Risk</MenuItem>
 			</Select>
 		</FormControl>
 	</div>);
