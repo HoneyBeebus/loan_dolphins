@@ -6,6 +6,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 
+import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+
 export default MatrixPage;
 const useStyles = makeStyles((theme) => ({
 	button: {
@@ -37,7 +40,43 @@ function MatrixPage(){
 	};
 
 	return (
+		
 	<div>
+		<SideNav
+    			onSelect={(selected) => {
+        				// Add your code here
+    			}}
+			>
+    			<SideNav.Toggle />
+    			<SideNav.Nav defaultSelected="home">
+        			<NavItem eventKey="home">
+            			<NavIcon>
+                			<i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+            			</NavIcon>
+            			<NavText>
+                			Home
+            			</NavText>
+        			</NavItem>
+        			<NavItem eventKey="charts">
+            			<NavIcon>
+                			<i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+            			</NavIcon>
+            			<NavText>
+                			Charts
+            			</NavText>
+            		<NavItem eventKey="charts/linechart">
+                		<NavText>
+                    		Line Chart
+                		</NavText>
+            		</NavItem>
+            		<NavItem eventKey="charts/barchart">
+                		<NavText>
+                    		Bar Chart
+                		</NavText>
+            		</NavItem>
+        		</NavItem>
+    		</SideNav.Nav>
+		</SideNav>
 		<h1>Documentation</h1>
 		<Button className={classes.button} onClick={handleOpen}>
 			Select Matrix
