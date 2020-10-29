@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import './Matrix.css';
 
 export default MatrixPage;
 const useStyles = makeStyles((theme) => ({
@@ -78,6 +79,7 @@ function MatrixPage(){
     		</SideNav.Nav>
 		</SideNav>
 		<h1>Documentation</h1>
+		<img src="matrix1.png"  />
 		<Button className={classes.button} onClick={handleOpen}>
 			Select Matrix
 		</Button>
