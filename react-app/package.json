@@ -22,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flask": "cd api && venv/bin/flask run --no-debugger",
+    "flask-windows": "cd api && venv\\Scripts\\flask.exe run --no-debugger"
   },
   "eslintConfig": {
     "extends": "react-app"
