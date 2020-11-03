@@ -10,6 +10,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@trendmicro/react-sidenav": "^0.5.0",
+    "cross-env": "^7.0.2",
     "history": "^5.0.0",
     "react": "^16.14.0",
     "react-bootstrap-validation": "^0.1.11",
@@ -23,8 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "flask": "cd api && export FLASK_APP=api.py && flask run --no-debugger",
-    "flask-windows": "cd api && venv\\Scripts\\flask.exe run --no-debugger"
+    "flask": "cd api && cross-env FLASK_APP=api flask run --no-debugger"
   },
   "eslintConfig": {
     "extends": "react-app"

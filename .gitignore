@@ -1,4 +1,5 @@
 __pycache__
+*.pyc
 react-app/api/venv/lib64
 react-app/api/venv/bin/python
 react-app/api/venv/bin/python3
