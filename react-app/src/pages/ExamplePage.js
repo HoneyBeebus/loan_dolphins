@@ -1,12 +1,18 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 
+function testFlask() {
+  fetch("/testflask").then(res => res.json()).then(data => {
+    alert(JSON.stringify(data))
+  });
+}
+
 function ExamplePage() {
 	return (<>
 		<img src="oportun_logo_circle.png" className="App-logo" alt="logo" />
         <Button
           variant="contained" color="primary"
-          onClick={() => alert("Hi!")}>
+          onClick={testFlask}>
             Test Button
         </Button>
         <p>
