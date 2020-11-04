@@ -28,15 +28,25 @@ class LoginPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-
+			entries: []
 		};
+	}
+	componentDidMount() {
+		fetch("/analyses").then(res => res.json()).then(data => {
+			let analyses = data.analyses.map(row => {
+				row.id = row.AID;
+				return row;
+			});
+			console.log(analyses);
+			this.setState({entries: analyses});
+		});
 	}
 	render() {
 		return (<div>
 			<h1>Dashboard View</h1>
 			<span>Recent Entries</span> <TextField type="search" variant="outlined" /> <Button variant="contained">Search</Button>
 			<div class="Dashboard-grid">
-				<DataGrid id="Dashboard-grid" rows={testData} columns={header} />
+				<DataGrid id="Dashboard-grid" rows={this.state.entries} columns={header} />
 			</div>
 		</div>);
 	}
