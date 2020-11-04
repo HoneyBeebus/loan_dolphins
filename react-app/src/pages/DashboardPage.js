@@ -10,19 +10,6 @@ const header = [
 	{field: "potentialLossMagnitude", headerName: "Potential Loss Magnitude", width: 200}
 ];
 
-// TODO: replace this with data pulled from the database
-const testData = [
-	{
-		id: 0, lossScenario: "abcdefg", runDate: "04-21-2019",
-		overallResidualRisk: "Very High",
-		potentialLossMagnitude: "$100,000 to $999,999"
-	}
-];
-for (var i = 1; i < 200; i++) {
-	testData.push(JSON.parse(JSON.stringify(testData[0])));
-	testData[i].id = i;
-	testData[i].customer += i;
-}
 
 class LoginPage extends React.Component {
 	constructor(props) {
@@ -34,6 +21,8 @@ class LoginPage extends React.Component {
 	componentDidMount() {
 		fetch("/analyses").then(res => res.json()).then(data => {
 			let analyses = data.analyses.map(row => {
+				// For each row, copy the analysis ID to the "id" property
+				// Since DataGrid requires each row to have "id"
 				row.id = row.AID;
 				return row;
 			});
