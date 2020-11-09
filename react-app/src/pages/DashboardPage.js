@@ -11,7 +11,7 @@ const header = [
 ];
 
 
-class LoginPage extends React.Component {
+class DashboardPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -41,4 +41,4 @@ class LoginPage extends React.Component {
 	}
 }
 
-export default LoginPage;
+export default DashboardPage;

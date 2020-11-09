@@ -1,32 +1,24 @@
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
+import {Navbar, Nav} from 'react-bootstrap';
 
-// Be sure to include styles at some point, probably during your bootstraping
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+export class Navigation extends Component {
+  render(){
+    return (
+      <Navbar bg="dark" expand="lg">
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Collapse id="basic-navbar-nav">
+        <Nav>
 
-{/*import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
-
-function handleClick(event) {
-  event.preventDefault();
-  console.info('You clicked a breadcrumb.');
-}
-
-export default function SimpleBreadcrumbs() {
-  return (
-    <Breadcrumbs aria-label="breadcrumb">
-      <Link color="inherit" href="./dashboard" onClick={handleClick}>
-        Dashboard
-      </Link>
-      <Link color="inherit" href="./outcomes" onClick={handleClick}>
-        Outcomes
-      </Link>
-      <Typography color="textPrimary">Breadcrumb</Typography>
-    </Breadcrumbs>
-  );
-} */}
-
-export default function navBar() {
-    
+          <NavLink className="d-inline p-2 bg-dark text-white" to="/">Login</NavLink>
+          <NavLink className="d-inline p-2 bg-dark text-white" to="/dashboard">Dashboard</NavLink>
+          <NavLink className="d-inline p-2 bg-dark text-white" to="/outcome">Outcomes</NavLink>
+          <NavLink className="d-inline p-2 bg-dark text-white" to="/matrix">Matricies</NavLink>
+          <NavLink className="d-inline p-2 bg-dark text-white" to="/risk">Risk Analysis</NavLink>
+          
+        </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    )
+  }
 }
