@@ -6,6 +6,7 @@ export class Navigation extends Component {
   render(){
     return (
       <Navbar bg="dark" expand="lg">
+        <img src="oportun_logo_circle.png" width="45" height="20"alt="Logo" />
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav>

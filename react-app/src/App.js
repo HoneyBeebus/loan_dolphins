@@ -19,9 +19,6 @@ function App() {
     <BrowserRouter>
     <div className="App">
 
-      <h3 className="m-3 d-flex justify-contnet-center"><img src="../public/oportun_logo_circle.png" width="90" height="53"alt="Logo" />
-        Oportun
-      </h3>
       <Navigation/>
       
       <Switch>
