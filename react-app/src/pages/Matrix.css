@@ -2,3 +2,14 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.button {
+    display: 'block';
+    margin-top: 1;
+}
+
+.formControl {
+    display: 'block';
+    margin: 1;
+    min-width: 120;
+}

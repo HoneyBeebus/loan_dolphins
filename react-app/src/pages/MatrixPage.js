@@ -1,110 +1,67 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './Matrix.css';
 
-export default MatrixPage;
-const useStyles = makeStyles((theme) => ({
-	button: {
-		display: 'block',
-		marginTop: theme.spacing(2),
-	},
-	formControl: {
-		margin: theme.spacing(1),
-		minWidth: 120,
-	},
-}));
 
-function MatrixPage(){
-	
-	const classes = useStyles();
-	const [age, setAge] = React.useState('');
-	const [open, setOpen] = React.useState(false);
-		
-	const handleChange = (event) => {
-		setAge(event.target.value);
-	};
-		
-	const handleClose = () => {
-		setOpen(false);
-	};
-		
-	const handleOpen = () => {
-		setOpen(true);
-	};
+class MatrixPage extends React.Component {
+    constructor(props) {
+        super(props);
+		this.state = {
+            age: '',
+            open: false,
+            source: "matrix1.png"
+		};
+    }
+    handleChange = (event) => {
+        this.setState({source: event.target.value});
+    }
+        
+    handleClose = () => {
+        this.setState({open: false});
+    }
+        
+    handleOpen = () => {
+        this.setState({open: true});
+    }
 
+    render() {
 	return (
 		
 	<div>
-		<SideNav
-    			onSelect={(selected) => {
-        				// Add your code here
-    			}}
-			>
-    			<SideNav.Toggle />
-    			<SideNav.Nav defaultSelected="home">
-        			<NavItem eventKey="home">
-            			<NavIcon>
-                			<i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
-            			</NavIcon>
-            			<NavText>
-                			Home
-            			</NavText>
-        			</NavItem>
-        			<NavItem eventKey="charts">
-            			<NavIcon>
-                			<i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-            			</NavIcon>
-            			<NavText>
-                			Charts
-            			</NavText>
-            		<NavItem eventKey="charts/linechart">
-                		<NavText>
-                    		Line Chart
-                		</NavText>
-            		</NavItem>
-            		<NavItem eventKey="charts/barchart">
-                		<NavText>
-                    		Bar Chart
-                		</NavText>
-            		</NavItem>
-        		</NavItem>
-    		</SideNav.Nav>
-		</SideNav>
 		<h1>Documentation</h1>
-		<img src="matrix1.png"  />
-		<Button className={classes.button} onClick={handleOpen}>
+		<img src={this.state.source} /> 
+		<Button onClick={this.handleOpen}>
 			Select Matrix
 		</Button>
-		<FormControl className={classes.formControl}>
-			<InputLabel id="demo-controlled-open-select-label">Matrix</InputLabel>
+		<div class="formControl">
+			<div id="demo-controlled-open-select-label">Matrix</div>
 			<Select
 				labelId="demo-controlled-open-select-label"
 				id="demo-controlled-open-select"
-				open={open}
-				onClose={handleClose}
-				onOpen={handleOpen}
-				value={age}
-				onChange={handleChange}
+				open={this.state.open}
+				onClose={this.handleClose}
+				onOpen={this.handleOpen}
+				value={this.source}
+                onChange={this.handleChange}
 			>
-				<MenuItem value="">
+				<MenuItem value={"matrix1.png"}>
 					<em>Overall Risk</em>
 				</MenuItem>
-				<MenuItem value={10}>Primary Risk</MenuItem>
-				<MenuItem value={20}>Secondary Risk</MenuItem>
-				<MenuItem value={30}>Loss Event Frequency</MenuItem>
-				<MenuItem value={40}>Vulnerabilty</MenuItem>
-				<MenuItem value={50}>Secondary Loss Event Frequency</MenuItem>
-				<MenuItem value={60}>Overall Risk</MenuItem>
+				<MenuItem value={"matrix2.png"} >Primary Risk</MenuItem>
+				<MenuItem value={""}>Secondary Risk</MenuItem>
+				<MenuItem value={""}>Loss Event Frequency</MenuItem>
+				<MenuItem value={""}>Vulnerabilty</MenuItem>
+				<MenuItem value={""}>Secondary Loss Event Frequency</MenuItem>
 			</Select>
-		</FormControl>
+		</div>
 	</div>);
 }
+}
 
+export default MatrixPage;
