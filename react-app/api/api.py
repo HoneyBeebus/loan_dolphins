@@ -1,5 +1,6 @@
 import sqlite3
 from flask import Flask
+from flask import request
 
 app = Flask(__name__)
 
@@ -26,3 +27,33 @@ def get_analyses():
 	c.execute("SELECT * FROM Analyses;")
 	analyses = c.fetchall()
 	return {"analyses": analyses}
+
+@app.route('/runAnalysis',methods=["POST"])
+def run_analysis():
+	# get the data sent by the request
+	analysis_data = request.get_json()
+
+	# access properties like so
+	test_prop = analysis_data["contactFrequencyAvoidanceInherent"]
+	print(f"Testing reading from analysis data: {test_prop}")
+	
+	# List of properties is:
+	# contactFrequencyAvoidanceInherent
+	# contactFrequencyAvoidanceControls
+	# probabilityOfActionDeterrenceInherent
+	# probabilityOfActionDeterrenceControls
+	# threatCapability
+	# resistanceStrengthVulnerabilityInherent
+	# resistanceStrengthVulnerabilityControls
+	# primaryLossMagnitudeInherent
+	# primaryLossMagnitudeControls
+	# secondaryLossMagnitudeInherent
+	# secondaryLossMagnitudeControls
+	# secondaryLossProbabilty
+
+	# analysis logic can be called here.
+	
+	# and commit to database?
+
+	# respond back to the client with something here
+	return {}

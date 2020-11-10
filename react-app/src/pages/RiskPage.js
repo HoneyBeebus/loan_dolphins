@@ -6,11 +6,37 @@ import Button from '@material-ui/core/Button';
 
 class RiskPage extends React.Component {
     constructor(props) {
-      super(props);
-          this.state = {
-  
-          };
+        super(props);
+        this.state = {
+            analysisData: {
+                contactFrequencyAvoidanceInherent: 1,
+                contactFrequencyAvoidanceControls: 1,
+                probabilityOfActionDeterrenceInherent: 1,
+                probabilityOfActionDeterrenceControls: 1,
+                threatCapability: 1,
+                resistanceStrengthVulnerabilityInherent: 1,
+                resistanceStrengthVulnerabilityControls: 1,
+                primaryLossMagnitudeInherent: 1,
+                primaryLossMagnitudeControls: 1,
+                secondaryLossMagnitudeInherent: 1,
+                secondaryLossMagnitudeControls: 1,
+                secondaryLossProbabilty: 1
+            }
+        };
     } 
+
+    runAnalysis = () => {
+        // send a POST request to the /runAnalysis endpoint with the analysis data
+        fetch("/runAnalysis", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(this.state.analysisData)
+        })
+        .then(response => response.json()).then(data => {
+            // print the response from the server
+            console.log(data)
+        });
+    }
 
     render() {
           return (
@@ -56,7 +82,7 @@ class RiskPage extends React.Component {
                         <Grid item xs = {6}></Grid>
                         <Grid item xs = {6}><Button variant = "outlined" size = "large" color = "black">one</Button></Grid>
                         <Grid item xs = {3}><Button variant="contained">Reset</Button></Grid>
-                        <Grid item xs ={3}><Button variant="contained">Run Analysis</Button></Grid>
+                        <Grid item xs ={3}><Button variant="contained" onClick={this.runAnalysis}>Run Analysis</Button></Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs ={2}/>
