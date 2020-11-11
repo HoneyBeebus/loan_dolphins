@@ -13,9 +13,8 @@ class MatrixPage extends React.Component {
     constructor(props) {
         super(props);
 		this.state = {
-            age: '',
             open: false,
-            source: "matrix1.png"
+            source: "overall.png"
 		};
     }
     handleChange = (event) => {
@@ -50,14 +49,14 @@ class MatrixPage extends React.Component {
 				value={this.source}
                 onChange={this.handleChange}
 			>
-				<MenuItem value={"matrix1.png"}>
+				<MenuItem value={"overall.png"}>
 					<em>Overall Risk</em>
 				</MenuItem>
-				<MenuItem value={"matrix2.png"} >Primary Risk</MenuItem>
-				<MenuItem value={""}>Secondary Risk</MenuItem>
-				<MenuItem value={""}>Loss Event Frequency</MenuItem>
-				<MenuItem value={""}>Vulnerabilty</MenuItem>
-				<MenuItem value={""}>Secondary Loss Event Frequency</MenuItem>
+				<MenuItem value={"primary.png"} >Primary Risk</MenuItem>
+				<MenuItem value={"secondary.png"}>Secondary Risk</MenuItem>
+				<MenuItem value={"primLoss.png"}>Loss Event Frequency</MenuItem>
+				<MenuItem value={"vulnerability.png"}>Vulnerability</MenuItem>
+				<MenuItem value={"secLoss.png"}>Secondary Loss Event Frequency</MenuItem>
 			</Select>
 		</div>
 	</div>);
