@@ -1,3 +1,4 @@
+import datetime
 import sqlite3
 from flask import Flask
 from flask import request
@@ -54,6 +55,47 @@ def run_analysis():
 	# analysis logic can be called here.
 	
 	# and commit to database?
+	conn = sqlite3.connect("../../data.sqlite")
+	c = conn.cursor()
+
+	# get a new ID for the analysis
+	c.execute("SELECT max(AID) FROM Analyses;")
+	max_aid = c.fetchone()[0]
+	if max_aid == None:
+		aid = 0
+	else:
+		aid = max_aid + 1
+	
+	c.execute(
+		"INSERT INTO Analyses "
+		"(AID, UID, lossScenario, runDate, overallResidualRisk, potentialLossMagnitude, "
+		"resistanceStrengthVulnerabilityInherent, resistanceStrengthVulnerabilityControls, "
+		"probabilityOfActionDeterrenceInherent, probabilityOfActionDeterrenceControls, "
+		"contactFrequencyAvoidanceInherent, contactFrequencyAvoidanceControls, "
+		"threatCapability, secondaryLossProbability, "
+		"primaryLossMagnitudeResponsiveInherent, primaryLossMagnitudeResponsiveControls, "
+		"secondaryLossMagnitudeResponsiveInherent, secondaryLossMagnitudeResponsiveControls, "
+		"notes) "
+		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+		(
+			aid, 1, "temporary scenario", datetime.datetime.now(), 'VL', 1,
+			analysis_data["resistanceStrengthVulnerabilityInherent"],
+			analysis_data["resistanceStrengthVulnerabilityControls"],
+			analysis_data["probabilityOfActionDeterrenceInherent"],
+			analysis_data["probabilityOfActionDeterrenceControls"],
+			analysis_data["contactFrequencyAvoidanceInherent"],
+			analysis_data["contactFrequencyAvoidanceControls"],
+			analysis_data["threatCapability"],
+			analysis_data["secondaryLossProbability"],
+			analysis_data["primaryLossMagnitudeResponsiveInherent"],
+			analysis_data["primaryLossMagnitudeResponsiveControls"],
+			analysis_data["secondaryLossMagnitudeResponsiveInherent"],
+			analysis_data["secondaryLossMagnitudeResponsiveControls"],
+			"temporary notes"
+		)
+	)
+	conn.commit()
+
 
 	# respond back to the client with something here
 	return {}
