@@ -16,11 +16,11 @@ class RiskPage extends React.Component {
                 threatCapability: 1,
                 resistanceStrengthVulnerabilityInherent: 1,
                 resistanceStrengthVulnerabilityControls: 1,
-                primaryLossMagnitudeInherent: 1,
-                primaryLossMagnitudeControls: 1,
-                secondaryLossMagnitudeInherent: 1,
-                secondaryLossMagnitudeControls: 1,
-                secondaryLossProbabilty: 1
+                primaryLossMagnitudeResponsiveInherent: 1,
+                primaryLossMagnitudeResponsiveControls: 1,
+                secondaryLossMagnitudeResponsiveInherent: 1,
+                secondaryLossMagnitudeResponsiveControls: 1,
+                secondaryLossProbability: 1
             }
         };
     } 
