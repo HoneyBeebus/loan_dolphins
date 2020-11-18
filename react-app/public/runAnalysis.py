@@ -7,34 +7,37 @@
 #Simple input function for testing purposes
 def input_test():
 
-    dict = {
-        #padInherent = Probability of Action Deterrence Inherent = cell C36
-        "padInherent" : input("Probability of Action Deterrence Inherent: "),
-        #padControls = Probability of Action Deterrence Controls = cell D36
-        "padControls" : input("Probability of Action Deterrence Controls: "),
-        #rsvInherent = Resistance Strength Vulnerability Inherent = cell G36
-        "rsvInherent" : input("Resistance Strength Vulnerability Inherent: "),
-        #rsvControls = Resistance Strength Vulnerability Controls = cell H36
-        "rsvControls" : input("Resistance Strength Vulnerability Controls: "),
-        #cfaInherent = Contact Frequency Avoidance Inherent = cell C31
-        "cfaInherent" : input("Contact Frequency Avoidance Inherent: "),
-        #cfaControls = Contact Frequency Avoidance Controls = cell D31
-        "cfaControls" : input("Contact Frequency Avoidance Controls: "),
-        #tcOWASP = Threat Capability OWASP = cell H31
-        "tcOWASP" : input("Threat Capability OWASP: "),
-        # slpPer = Secondary Loss Probability % = cell R26
-        "slpPer" : input("Secondary Loss Probability %: "),
-        #plmrInherent = Primary Loss Magnitude Responsive Inherent = cell H21
-        "plmrInherent" : input("Primary Loss Magnitude Responsive Inherent: "),
-        #plmrControls = Primary Loss Magnitude Controls = cell I21
-        "plmrControls" : input("Primary Loss Magnitude Controls: "),
-        #slmrInherent = Secondary Loss Magnitude Responsive Inherent = cell L21
-        "slmrInherent" : input("Secondary Loss Magnitude Responsive Inherent: "),
-        #slmrControls = Secondary Loss Magnitude Responsive Controls = cell M21
-        "slmrControls" : input("Secondary Loss Magnitude Responsive Controls: ")
-    }
+    #padInherent = Probability of Action Deterrence Inherent = cell C36
+    #padControls = Probability of Action Deterrence Controls = cell D36
+    #rsvInherent = Resistance Strength Vulnerability Inherent = cell G36
+    #rsvControls = Resistance Strength Vulnerability Controls = cell H36
+    #cfaInherent = Contact Frequency Avoidance Inherent = cell C31
+    #cfaControls = Contact Frequency Avoidance Controls = cell D31
+    #tcOWASP = Threat Capability OWASP = cell H31
+    #slpPer = Secondary Loss Probability % = cell R26
+    #plmrInherent = Primary Loss Magnitude Responsive Inherent = cell H21
+    #plmrControls = Primary Loss Magnitude Controls = cell I21
+    #slmrInherent = Secondary Loss Magnitude Responsive Inherent = cell L21
+    #slmrControls = Secondary Loss Magnitude Responsive Controls = cell M21
 
-    return dict
+
+
+    d = dict()
+
+    d["padInherent"] = input("Probability of Action Deterrence Inherent: ")
+    d["padControls"] = input("Probability of Action Deterrence Controls: ")
+    d["rsvInherent"] = input("Resistance Strength Vulnerability Inherent: ")
+    d["rsvControls"] = input("Resistance Strength Vulnerability Controls: ")
+    d["cfaInherent"] = input("Contact Frequency Avoidance Inherent: ")
+    d["cfaControls"] = input("Contact Frequency Avoidance Controls: ")
+    d["tcOWASP"] = input("Threat Capability OWASP: ")
+    d["slpPer"] = input("Secondary Loss Probability %: ")
+    d["plmrInherent"] = input("Primary Loss Magnitude Responsive Inherent: ")
+    d["plmrControls"] = input("Primary Loss Magnitude Responsive Controls: ")
+    d["slmrInherent"] = input("Secondary Loss Magnitude Responsive Inherent: ")
+    d["slmrControls"] = input("Secondary Loss Magnitude Responsive Controls: ")
+
+    return d
 
 #___________________________________________________________________________________________________________________________________#
 
@@ -43,136 +46,150 @@ def input_test():
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 #Function to calculate threat event frequency
-def threat_event_frequency():
+def threatEventFrequency(d):
     #Threat Event Frequency variable
-    tefInherent = 0
+    d["tefInherent"] = 0
     
     #temporary variable to hold sum
-    temp = padInherent + cfaInherent
+    temp = d["padInherent"] + d["cfaInherent"]
 
     if temp < 5:
-        tefInherent = 1
+        d["tefInherent"] = 1
     elif temp == 5:
-        tefInherent = 2
+        d["tefInherent"] = 2
     elif temp == 6:
-        tefInherent = 3
+        d["tefInherent"] = 3
     elif temp == 7:
-        tefInherent = 4
+        d["tefInherent"] = 4
     elif temp > 7:
-        tefInherent = 5
+        d["tefInherent"] = 5
     else:
         print("INVALID OUTPUT FOR THREAT EVENT FREQUENCY")
+    
+    return d
+
 
 #Function to calculate vulnerability
-def vulnerability():
+def vulnerability(d):
     #vulnerability variable
-    vulInherent = 0
+    d["vulInherent"] = 0
 
     #temporary variable to hold sum
-    temp = padInherent + cfaInherent
+    temp = d["padInherent"] + d["cfaInherent"]
 
     if temp < 5:
-        vulInherent = 1
+        d["vulInherent"] = 1
     elif temp == 5:
-        vulInherent = 2
+        d["vulInherent"] = 2
     elif temp == 6:
-        vulInherent = 3
+        d["vulInherent"] = 3
     elif temp == 7:
-        vulInherent = 4
+        d["vulInherent"] = 4
     elif temp > 7:
-        vulInherent = 5
+        d["vulInherent"] = 5
     else:
-        print("INVALID OUTPUT FOR VULNERABILITY") 
+        print("INVALID OUTPUT FOR VULNERABILITY")
+    
+    return d
 
 #Function to calculate primary loss event frequency
-def primaryLossEventFrequency():
+def primaryLossEventFrequency(d):
     #primary loss event frequency variable
-    plefInherent = 0
+    d["plefInherent"] = 0
 
     #temporary variable to hold sum
-    temp = tefInherent + vulInherent
+    temp = d["tefInherent"] + d["vulInherent"]
 
     if temp < 5:
-        plefInherent = 1
+        d["plefInherent"] = 1
     elif temp == 5:
-        plefInherent = 2
+        d["plefInherent"] = 2
     elif temp == 6:
-        plefInherent = 3
+        d["plefInherent"] = 3
     elif temp == 7:
-        plefInherent = 4
+        d["plefInherent"] = 4
     elif temp > 7:
-        plefInherent = 5
+        d["plefInherent"] = 5
     else:
         print("INVALID OUTPUT FOR PRIMARY LOSS EVENT FREQUENCY")
 
+    return d
+
 #Function to calculate primary risk
-def primaryRisk():
+def primaryRisk(d):
     #primary risk variable
-    priskInherent = 0
+    d["priskInherent"] = 0
 
     #temporary variable to hold sum
-    temp = plefInherent + plmrInherent
+    temp = d["plefInherent"] + d["plmrInherent"]
     
     if temp < 5:
-        priskInherent = 1
+        d["priskInherent"] = 1
     elif temp == 5:
-        priskInherent = 2
+        d["priskInherent"] = 2
     elif temp == 6:
-        priskInherent = 3
+        d["priskInherent"] = 3
     elif temp == 7:
-        priskInherent = 4
+        d["priskInherent"] = 4
     elif temp > 7:
-        priskInherent = 5
+        d["priskInherent"] = 5
     else:
         print("INVALID OUTPUT FOR PRIMARY RISK")
 
+    return d
+
 #Function to calculate secondary loss event frequency
-def secondaryLossEventFrequency():
+def secondaryLossEventFrequency(d):
     #secondary loss event frequency variable
-    sLEFInherent = 0
+    d["sLEFInherent"] = 0
 
     #temporary variable to hold sum
-    temp = slpPer + plefInherent
+    temp = d["slpPer"] + d["plefInherent"]
 
     if temp < 5:
-        sLEFInherent = 1
+        d["sLEFInherent"] = 1
     elif temp == 5:
-        sLEFInherent = 2
+        d["sLEFInherent"] = 2
     elif temp == 6:
-        sLEFInherent = 3
+        d["sLEFInherent"] = 3
     elif temp == 7:
-        sLEFInherent = 4
+        d["sLEFInherent"] = 4
     elif temp > 7:
-        sLEFInherent = 5
+        d["sLEFInherent"] = 5
     else:
         print("INVALID OUTPUT FOR SECONDARY LOSS EVENT FREQUENCY")
 
+    return d
+
 #Function to calculate secondary risk
-def secondaryRisk():
+def secondaryRisk(d):
     #secondary risk variable
-    sriskInherent = 0
+    d["sriskInherent"] = 0
 
     #temporary variable to hold sum
-    temp = sLEFInherent + slmrInherent
+    temp = d["sLEFInherent"] + d["slmrInherent"]
 
     if temp < 5:
-        sriskInherent = 1
+        d["sriskInherent"] = 1
     elif temp == 5:
-        sriskInherent = 2
+        d["sriskInherent"] = 2
     elif temp == 6:
-        sriskInherent = 3
+        d["sriskInherent"] = 3
     elif temp == 7:
-        sriskInherent = 4
+        d["sriskInherent"] = 4
     elif temp > 7:
-        sriskInherent = 5
+        d["sriskInherent"] = 5
     else:
         print("INVALID OUTPUT FOR SECONDARY RISK")
 
-#Function to calculate overall risk
-def overallRisk():
-    #overall risk variable
-    ovrInherent = 0
+    return d
 
+#Function to calculate overall risk
+def overallRisk(d):
+    #overall risk variable
+    d["ovrInherent"] = max(d["priskInherent"], d["sriskInherent"])
+
+    """
     if priskInherent == 1 and sriskInherent == 1:
         ovrInherent = 1
     elif priskInherent == 1 and sriskInherent == 2:
@@ -225,6 +242,9 @@ def overallRisk():
         ovrInherent = 5
     else:
         print("INVALID OUTPUT FOR OVERALL RISK")
+    """
+
+    return d
 
 #___________________________________________________________________________________________________________________________________#
 
@@ -233,47 +253,47 @@ def overallRisk():
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 #Function for translating primary risk integer values to strings
-def translatePrisk():
-    if priskInherent == 1:
+def translatePrisk(d):
+    if d["priskInherent"] == 1:
         print("Primary Risk: INHERENT=Very Low")
-    elif priskInherent == 2:
+    elif d["priskInherent"] == 2:
         print("Primary Risk: INHERENT=Low")
-    elif priskInherent == 3:
+    elif d["priskInherent"] == 3:
         print("Primary Risk: INHERENT=Medium")
-    elif priskInherent == 4:
+    elif d["priskInherent"] == 4:
         print("Primary Risk: INHERENT=High")
-    elif priskInherent == 5:
+    elif d["priskInherent"] == 5:
         print("Primary Risk: INHERENT=Very High")
     else:
         print("ERROR IN PRIMARY RISK TRANSLATION")
 
 #Function for translating secondary risk integer values to strings
-def translateSrisk():
-    if ovrInherent == 1:
-        print("Overall Risk: INHERENT=Very Low")
-    elif ovrInherent == 2:
-        print("Overall Risk: INHERENT=Low")
-    elif ovrInherent == 3:
-        print("Overall Risk: INHERENT=Medium")
-    elif ovrInherent == 4:
-        print("Overall Risk: INHERENT=High")
-    elif ovrInherent == 5:
-        print("Overall Risk: INHERENT=Very High")
+def translateSrisk(d):
+    if d["sriskInherent"] == 1:
+        print("Secondary Risk: INHERENT=Very Low")
+    elif d["sriskInherent"] == 2:
+        print("Secondary Risk: INHERENT=Low")
+    elif d["sriskInherent"] == 3:
+        print("Secondary Risk: INHERENT=Medium")
+    elif d["sriskInherent"] == 4:
+        print("Secondary Risk: INHERENT=High")
+    elif d["sriskInherent"] == 5:
+        print("Secondary Risk: INHERENT=Very High")
     else:
         print("ERROR IN OVERALL RISK TRANSLATION")
 
 #Function for translating overall risk integer values to strings
-def translateOrisk():
-    if riskInherent == 1:
-        print("Primary Risk: INHERENT=Very Low")
-    elif priskInherent == 2:
-        print("Primary Risk: INHERENT=Low")
-    elif priskInherent == 3:
-        print("Primary Risk: INHERENT=Medium")
-    elif priskInherent == 4:
-        print("Primary Risk: INHERENT=High")
-    elif priskInherent == 5:
-        print("Primary Risk: INHERENT=Very High")
+def translateOrisk(d):
+    if d["ovrInherent"] == 1:
+        print("Overall Risk: INHERENT=Very Low")
+    elif d["ovrInherent"] == 2:
+        print("Overall Risk: INHERENT=Low")
+    elif d["ovrInherent"] == 3:
+        print("Overall Risk: INHERENT=Medium")
+    elif d["ovrInherent"] == 4:
+        print("Overall Risk: INHERENT=High")
+    elif d["ovrInherent"] == 5:
+        print("Overall Risk: INHERENT=Very High")
     else:
         print("ERROR IN PRIMARY RISK TRANSLATION")
 
@@ -284,19 +304,19 @@ def translateOrisk():
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 #Function for handeling output
-def display():
+def display(d):
     print("                         ")
     print("                         ")
     print("++++++++++       OUTPUT         ++++++++++")
     print("                         ")
     print("                         ")
-    print("Threat Event Frequency: INHERENT=" + tefInherent)
-    print("Vulnerability: INHERENT=" + vulInherent)
-    print("Primary Loss Event Frequency: INHERENT=" + plefInherent)
-    translatePrisk()
-    print("Secondary Loss Event Frequency: INHERENT=" + sLEFInherent)
-    translateSrisk()
-    translateOrisk()
+    print("Threat Event Frequency: INHERENT=" + d["tefInherent"])
+    print("Vulnerability: INHERENT=" + d["vulInherent"])
+    print("Primary Loss Event Frequency: INHERENT=" + d["plefInherent"])
+    translatePrisk(d)
+    print("Secondary Loss Event Frequency: INHERENT=" + d["sLEFInherent"])
+    translateSrisk(d)
+    translateOrisk(d)
 
 #___________________________________________________________________________________________________________________________________#
 
@@ -305,30 +325,32 @@ def display():
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 #Function to handle all steps of FAIR analysis
-def FAIR():
+def FAIR(d):
     print("[][][][][][][]")
-    threatEventFrequency()
+    d = threatEventFrequency(d)
     print("[X][][][][][][]")
-    vulnerability()
+    d = vulnerability(d)
     print("[X][X][][][][][]")
-    primaryLossEventFrequency()
+    d = primaryLossEventFrequency(d)
     print("[X][X][X][][][][]")
-    primaryRisk()
+    d = primaryRisk(d)
     print("[X][X][X][X][][][]")
-    secondaryLossEventFrequency()
+    d = secondaryLossEventFrequency(d)
     print("[X][X][X][X][X][][]")
-    secondaryRisk()
+    d = secondaryRisk(d)
     print("[X][X][X][X][X][X][]")
-    overallRisk()
+    d = overallRisk(d)
     print("[X][X][X][X][X][X][X]")
+
+    return d
 
 #Main driving function
 def main():
     print("++++++++++       INITIALIZED         ++++++++++")
-    InputTEST()
+    d = input_test()
     print("++++++++++       COMPUTING         ++++++++++")
-    FAIR()
+    d = FAIR(d)
     print("++++++++++       COMPLETE!        ++++++++++")
-    display()
+    display(d)
 
 #______________________________________________________________________________________________________________________________________#
