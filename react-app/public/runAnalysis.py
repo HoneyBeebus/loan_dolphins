@@ -187,8 +187,9 @@ def residual(d):
         elif d["slmrControls"] == 5:
             d["slmrResidual"] = 1
 
+    d["rsvResidual"] = max(d["rsvInherent"], d["rsvControls"])
 
-
+    return (d)
 
 #Function to calculate threat event frequency
 def threatEventFrequency(d):
@@ -458,11 +459,18 @@ def display(d):
     print("++++++++++       OUTPUT         ++++++++++")
     print("                         ")
     print("                         ")
+    print("Probability of Action Deterrence: INHERENT=" + str(d["padInherent"]) + " CONTROLS=" + str(d["padControls"]) + " RESIDUAL=" + str(d["padResidual"]))
+    print("Resistance Strength Vulnerability: INHERENT=" + str(d["rsvInherent"]) + " CONTROLS=" + str(d["rsvControls"]) + " RESIDUAL=" + str(d["rsvResidual"]))
+    print("Contact Frequency Avoidance INHERENT=" + str(d["cfaInherent"]) + " CONTROLS=" + str(d["cfaControls"]) + " RESIDUAL=" + str(d["cfaResidual"]))
+    print("Threat Capability OWASP=" + str(d["tcOWASP"]))
     print("Threat Event Frequency: INHERENT=" + str(d["tefInherent"]))
     print("Vulnerability: INHERENT=" + str(d["vulInherent"]))
+    print("Secondary Loss Probability %=" + str(d["slpPer"]))
     print("Primary Loss Event Frequency: INHERENT=" + str(d["plefInherent"]))
-    translatePrisk(d)
+    print("Primary Loss Magnitude Responsive INHERENT=" + str(d["plmrInherent"]) + " CONTROLS=" + str(d["plmrControls"]) + " RESIDUAL=" + str(d["plmrResidual"]))
+    print("Secondary Loss Magnitude Responsive INHERENT=" + str(d["slmrInherent"]) + " CONTROLS=" + str(d["slmrControls"]) + " RESIDUAL=" + str(d["slmrResidual"]))
     print("Secondary Loss Event Frequency: INHERENT=" + str(d["sLEFInherent"]))
+    translatePrisk(d)
     translateSrisk(d)
     translateOrisk(d)
 
@@ -474,6 +482,7 @@ def display(d):
 
 #Function to handle all steps of FAIR analysis
 def FAIR(d):
+    d = residual(d)
     print("[][][][][][][]")
     d = threatEventFrequency(d)
     print("[X][][][][][][]")
