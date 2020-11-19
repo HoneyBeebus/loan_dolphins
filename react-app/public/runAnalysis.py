@@ -24,18 +24,18 @@ def input_test():
 
     d = dict()
 
-    d["padInherent"] = input("Probability of Action Deterrence Inherent: ")
-    d["padControls"] = input("Probability of Action Deterrence Controls: ")
-    d["rsvInherent"] = input("Resistance Strength Vulnerability Inherent: ")
-    d["rsvControls"] = input("Resistance Strength Vulnerability Controls: ")
-    d["cfaInherent"] = input("Contact Frequency Avoidance Inherent: ")
-    d["cfaControls"] = input("Contact Frequency Avoidance Controls: ")
-    d["tcOWASP"] = input("Threat Capability OWASP: ")
-    d["slpPer"] = input("Secondary Loss Probability %: ")
-    d["plmrInherent"] = input("Primary Loss Magnitude Responsive Inherent: ")
-    d["plmrControls"] = input("Primary Loss Magnitude Responsive Controls: ")
-    d["slmrInherent"] = input("Secondary Loss Magnitude Responsive Inherent: ")
-    d["slmrControls"] = input("Secondary Loss Magnitude Responsive Controls: ")
+    d["padInherent"] = int(input("Probability of Action Deterrence Inherent: "))
+    d["padControls"] = int(input("Probability of Action Deterrence Controls: "))
+    d["rsvInherent"] = int(input("Resistance Strength Vulnerability Inherent: "))
+    d["rsvControls"] = int(input("Resistance Strength Vulnerability Controls: "))
+    d["cfaInherent"] = int(input("Contact Frequency Avoidance Inherent: "))
+    d["cfaControls"] = int(input("Contact Frequency Avoidance Controls: "))
+    d["tcOWASP"] = int(input("Threat Capability OWASP: "))
+    d["slpPer"] = int(input("Secondary Loss Probability %: "))
+    d["plmrInherent"] = int(input("Primary Loss Magnitude Responsive Inherent: "))
+    d["plmrControls"] = int(input("Primary Loss Magnitude Responsive Controls: "))
+    d["slmrInherent"] = int(input("Secondary Loss Magnitude Responsive Inherent: "))
+    d["slmrControls"] = int(input("Secondary Loss Magnitude Responsive Controls: "))
 
     return d
 
@@ -45,6 +45,151 @@ def input_test():
 #                                                               LOGIC                                                               #
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
+def residual(d):
+
+    if d["padInherent"] == 1:
+        d["padResidual"] = 1
+    elif d["padInherent"] == 2:
+        if d["padControls"] == 1 or d["padControls"] == 2:
+            d["padResidual"] = 2
+        elif d["padControls"] == 3 or d["padControls"] == 4 or d["padControls"] == 5:
+            d["padResidual"] = 1
+    elif d["padInherent"] == 3:
+        if d["padControls"] == 1 or d["padControls"] == 2:
+            d["padResidual"] = 3
+        elif d["padControls"] == 3 or d["padControls"] == 4:
+            d["padResidual"] = 2
+        elif d["padControls"] == 5:
+            d["padResidual"] = 1
+    elif d["padInherent"] == 4:
+        if d["padControls"] == 1 or d["padControls"] == 2:
+            d["padResidual"] = 4
+        elif d["padControls"] == 3:
+            d["padResdidual"] = 3
+        elif d["padControls"] == 4:
+            d["padResidual"] = 2
+        elif d["padControls"] == 5:
+            d["padResidual"] = 1
+    elif d["padInherent"] == 5:
+        if d["padControls"] == 1:
+            d["padResidual"] = 5
+        elif d["padControls"] == 2:
+            d["padResidual"] = 4
+        elif d["padControls"] == 3:
+            d["padResidual"] = 3
+        elif d["padControls"] == 4:
+            d["padResidual"] = 2
+        elif d["padControls"] == 5:
+            d["padResidual"] = 1
+    
+    if d["cfaInherent"] == 1:
+        d["cfaResidual"] = 1
+    elif d["cfaInherent"] == 2:
+        if d["cfaControls"] == 1 or d["cfaControls"] == 2:
+            d["cfaResidual"] = 2
+        elif d["cfaControls"] == 3 or d["cfaControls"] == 4 or d["cfaControls"] == 5:
+            d["cfaResidual"] = 1
+    elif d["cfaInherent"] == 3:
+        if d["cfaControls"] == 1 or d["cfaControls"] == 2:
+            d["cfaResidual"] = 3
+        elif d["cfaControls"] == 3 or d["cfaControls"] == 4:
+            d["cfaResidual"] = 2
+        elif d["cfaControls"] == 5:
+            d["cfaResidual"] = 1
+    elif d["cfaInherent"] == 4:
+        if d["cfaControls"] == 1 or d["cfaControls"] == 2:
+            d["cfaResidual"] = 4
+        elif d["cfaControls"] == 3:
+            d["cfaResdidual"] = 3
+        elif d["cfaControls"] == 4:
+            d["cfaResidual"] = 2
+        elif d["cfaControls"] == 5:
+            d["cfaResidual"] = 1
+    elif d["cfaInherent"] == 5:
+        if d["cfaControls"] == 1:
+            d["cfaResidual"] = 5
+        elif d["cfaControls"] == 2:
+            d["cfaResidual"] = 4
+        elif d["cfaControls"] == 3:
+            d["cfaResidual"] = 3
+        elif d["cfaControls"] == 4:
+            d["cfaResidual"] = 2
+        elif d["cfaControls"] == 5:
+            d["cfaResidual"] = 1
+    
+    if d["plmrInherent"] == 1:
+        d["plmrResidual"] = 1
+    elif d["plmrInherent"] == 2:
+        if d["plmrControls"] == 1 or d["plmrControls"] == 2:
+            d["plmrResidual"] = 2
+        elif d["plmrControls"] == 3 or d["plmrControls"] == 4 or d["plmrControls"] == 5:
+            d["plmrResidual"] = 1
+    elif d["plmrInherent"] == 3:
+        if d["plmrControls"] == 1 or d["plmrControls"] == 2:
+            d["plmrResidual"] = 3
+        elif d["plmrControls"] == 3 or d["plmrControls"] == 4:
+            d["plmrResidual"] = 2
+        elif d["plmrControls"] == 5:
+            d["plmrResidual"] = 1
+    elif d["plmrInherent"] == 4:
+        if d["plmrControls"] == 1 or d["plmrControls"] == 2:
+            d["plmrResidual"] = 4
+        elif d["plmrControls"] == 3:
+            d["plmrResdidual"] = 3
+        elif d["plmrControls"] == 4:
+            d["plmrResidual"] = 2
+        elif d["plmrControls"] == 5:
+            d["plmrResidual"] = 1
+    elif d["plmrInherent"] == 5:
+        if d["plmrControls"] == 1:
+            d["plmrResidual"] = 5
+        elif d["plmrControls"] == 2:
+            d["plmrResidual"] = 4
+        elif d["plmrControls"] == 3:
+            d["plmrResidual"] = 3
+        elif d["plmrControls"] == 4:
+            d["plmrResidual"] = 2
+        elif d["plmrControls"] == 5:
+            d["plmrResidual"] = 1
+
+    if d["slmrInherent"] == 1:
+        d["slmrResidual"] = 1
+    elif d["slmrInherent"] == 2:
+        if d["slmrControls"] == 1 or d["slmrControls"] == 2:
+            d["slmrResidual"] = 2
+        elif d["slmrControls"] == 3 or d["slmrControls"] == 4 or d["slmrControls"] == 5:
+            d["slmrResidual"] = 1
+    elif d["slmrInherent"] == 3:
+        if d["slmrControls"] == 1 or d["slmrControls"] == 2:
+            d["slmrResidual"] = 3
+        elif d["slmrControls"] == 3 or d["slmrControls"] == 4:
+            d["slmrResidual"] = 2
+        elif d["slmrControls"] == 5:
+            d["slmrResidual"] = 1
+    elif d["slmrInherent"] == 4:
+        if d["slmrControls"] == 1 or d["slmrControls"] == 2:
+            d["slmrResidual"] = 4
+        elif d["slmrControls"] == 3:
+            d["slmrResdidual"] = 3
+        elif d["slmrControls"] == 4:
+            d["slmrResidual"] = 2
+        elif d["slmrControls"] == 5:
+            d["slmrResidual"] = 1
+    elif d["slmrInherent"] == 5:
+        if d["slmrControls"] == 1:
+            d["slmrResidual"] = 5
+        elif d["slmrControls"] == 2:
+            d["slmrResidual"] = 4
+        elif d["slmrControls"] == 3:
+            d["slmrResidual"] = 3
+        elif d["slmrControls"] == 4:
+            d["slmrResidual"] = 2
+        elif d["slmrControls"] == 5:
+            d["slmrResidual"] = 1
+
+
+
+
 #Function to calculate threat event frequency
 def threatEventFrequency(d):
     #Threat Event Frequency variable
@@ -52,6 +197,7 @@ def threatEventFrequency(d):
     
     #temporary variable to hold sum
     temp = d["padInherent"] + d["cfaInherent"]
+
 
     if temp < 5:
         d["tefInherent"] = 1
@@ -76,6 +222,7 @@ def vulnerability(d):
 
     #temporary variable to hold sum
     temp = d["padInherent"] + d["cfaInherent"]
+
 
     if temp < 5:
         d["vulInherent"] = 1
@@ -145,6 +292,7 @@ def secondaryLossEventFrequency(d):
 
     #temporary variable to hold sum
     temp = d["slpPer"] + d["plefInherent"]
+    print(temp)
 
     if temp < 5:
         d["sLEFInherent"] = 1
@@ -310,11 +458,11 @@ def display(d):
     print("++++++++++       OUTPUT         ++++++++++")
     print("                         ")
     print("                         ")
-    print("Threat Event Frequency: INHERENT=" + d["tefInherent"])
-    print("Vulnerability: INHERENT=" + d["vulInherent"])
-    print("Primary Loss Event Frequency: INHERENT=" + d["plefInherent"])
+    print("Threat Event Frequency: INHERENT=" + str(d["tefInherent"]))
+    print("Vulnerability: INHERENT=" + str(d["vulInherent"]))
+    print("Primary Loss Event Frequency: INHERENT=" + str(d["plefInherent"]))
     translatePrisk(d)
-    print("Secondary Loss Event Frequency: INHERENT=" + d["sLEFInherent"])
+    print("Secondary Loss Event Frequency: INHERENT=" + str(d["sLEFInherent"]))
     translateSrisk(d)
     translateOrisk(d)
 
@@ -354,3 +502,5 @@ def main():
     display(d)
 
 #______________________________________________________________________________________________________________________________________#
+
+main()
