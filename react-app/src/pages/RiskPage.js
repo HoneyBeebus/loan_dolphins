@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, ButtonGroup} from '@material-ui/core';
+import { Grid, ButtonGroup, Select, MenuItem, FormControl, InputLabel, makeStyles, TextField} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 
@@ -48,39 +48,174 @@ class RiskPage extends React.Component {
                         <Grid container>
                              <Grid item xs = {6}>Contact Frequency Avoidance</Grid>
                              <Grid item xs = {6}>Probability of Action Deterrence</Grid>
-                            <Grid item xs = {6}><ButtonGroup size="large" color="black" aria-label="large outlined primary button group">
-                        <Button>One</Button>
-                        <Button>Two</Button>
-                        <Button>Three</Button>
-                        </ButtonGroup></Grid>
-                            <Grid item xs = {6}><ButtonGroup size="large" color="black" aria-label="large outlined primary button group">
-                        <Button>One</Button>
-                        <Button>Two</Button>
-                        <Button>Three</Button>
-                        </ButtonGroup></Grid>
+                            <Grid item xs = {6}><FormControl>
+                                    <InputLabel>Inherent</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Controls</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Residual</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                        </Grid>
+                            <Grid item xs = {6}><FormControl>
+                                    <InputLabel>Inherent</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Controls</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Residual</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl></Grid>
                         <Grid item xs = {6}>Threat Capability</Grid>
                         <Grid item xs = {6}>Resistance Strength Vulnerability</Grid>
-                        <Grid item xs = {6}><Button variant = "outlined" size = "large" color = "black">one</Button></Grid>
-                        <Grid item xs = {6}><ButtonGroup size="large" color="black" aria-label="large outlined primary button group">
-                        <Button>One</Button>
-                        <Button>Two</Button>
-                        <Button>Three</Button>
-                        </ButtonGroup></Grid>
+                        <Grid item xs = {6}><FormControl>
+                                <InputLabel>OWASP</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl></Grid>
+                        <Grid item xs = {6}><FormControl>
+                                    <InputLabel>Inherent</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Controls</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Residual</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl></Grid>
                         <Grid item xs = {6}>Primary Loss Magnitude Responsive</Grid>
                         <Grid item xs = {6}>Secondary Loss Magnitude Responsive</Grid>
-                        <Grid item xs = {6}><ButtonGroup size="large" color="black" aria-label="large outlined primary button group">
-                        <Button>One</Button>
-                        <Button>Two</Button>
-                        <Button>Three</Button>
-                        </ButtonGroup></Grid>
-                        <Grid item xs = {6}><ButtonGroup size="large" color="black" aria-label="large outlined primary button group">
-                        <Button>One</Button>
-                        <Button>Two</Button>
-                        <Button>Three</Button>
-                        </ButtonGroup></Grid>
+                        <Grid item xs = {6}><FormControl>
+                                    <InputLabel>Inherent</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Controls</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Residual</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl></Grid>
+                        <Grid item xs = {6}><FormControl>
+                                    <InputLabel>Inherent</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Controls</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl>
+                                <FormControl>
+                                <InputLabel>Residual</InputLabel>
+                                <Select variant = "outlined">
+                                <MenuItem value = {1}>one</MenuItem>
+                                <MenuItem value = {2}>two</MenuItem>
+                                <MenuItem value = {3}>three</MenuItem>
+                                <MenuItem value = {4}>four</MenuItem>
+                                <MenuItem value = {5}>five</MenuItem>
+                                </Select>
+                                </FormControl></Grid>
                         <Grid item xs = {6}>Secondary Loss Probability</Grid>
                         <Grid item xs = {6}></Grid>
-                        <Grid item xs = {6}><Button variant = "outlined" size = "large" color = "black">one</Button></Grid>
+                        <Grid item xs = {6}><TextField id="outlined-basic" label="Percent %" variant="outlined" /></Grid>
                         <Grid item xs = {3}><Button variant="contained">Reset</Button></Grid>
                         <Grid item xs ={3}><Button variant="contained" onClick={this.runAnalysis}>Run Analysis</Button></Grid>
                         </Grid>
