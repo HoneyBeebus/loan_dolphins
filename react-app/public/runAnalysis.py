@@ -195,21 +195,36 @@ def residual(d):
 def threatEventFrequency(d):
     #Threat Event Frequency variable
     d["tefInherent"] = 0
+    d["tefResidual"] = 0
     
     #temporary variable to hold sum
-    temp = d["padInherent"] + d["cfaInherent"]
+    temp1 = d["padInherent"] + d["cfaInherent"]
+    temp2 = d["padResidual"] + d["cfaResidual"]
 
 
-    if temp < 5:
+    if temp1 < 5:
         d["tefInherent"] = 1
-    elif temp == 5:
+    elif temp1 == 5:
         d["tefInherent"] = 2
-    elif temp == 6:
+    elif temp1 == 6:
         d["tefInherent"] = 3
-    elif temp == 7:
+    elif temp1 == 7:
         d["tefInherent"] = 4
-    elif temp > 7:
+    elif temp1 > 7:
         d["tefInherent"] = 5
+    else:
+        print("INVALID OUTPUT FOR THREAT EVENT FREQUENCY")
+
+    if temp2 < 5:
+        d["tefResidual"] = 1
+    elif temp2 == 5:
+        d["tefResidual"] = 2
+    elif temp2 == 6:
+        d["tefResidual"] = 3
+    elif temp2 == 7:
+        d["tefResidual"] = 4
+    elif temp2 > 7:
+        d["tefResidual"] = 5
     else:
         print("INVALID OUTPUT FOR THREAT EVENT FREQUENCY")
     
@@ -220,44 +235,155 @@ def threatEventFrequency(d):
 def vulnerability(d):
     #vulnerability variable
     d["vulInherent"] = 0
+    d["vulResidual"] = 0
 
-    #temporary variable to hold sum
-    temp = d["padInherent"] + d["cfaInherent"]
+    if d["tcOWASP"] == 1:
+        if d["rsvInherent"] == 1:
+            d["vulInherent"] = 3
+        elif d["rsvInherent"] == 2:
+            d["vulInherent"] = 2
+        elif d["rsvInherent"] == 3:
+            d["vulInherent"] = 1
+        elif d["rsvInherent"] == 4:
+            d["vulInherent"] = 1
+        elif d["rsvInherent"] == 5:
+            d["vulInherent"] = 1
+    elif d["tcOWASP"] == 2:
+        if d["rsvInherent"] == 1:
+            d["vulInherent"] = 4
+        elif d["rsvInherent"] == 2:
+            d["vulInherent"] = 3
+        elif d["rsvInherent"] == 3:
+            d["vulInherent"] = 2
+        elif d["rsvInherent"] == 4:
+            d["vulInherent"] = 1
+        elif d["rsvInherent"] == 5:
+            d["vulInherent"] = 1
+    elif d["tcOWASP"] == 3:
+        if d["rsvInherent"] == 1:
+            d["vulInherent"] = 5
+        elif d["rsvInherent"] == 2:
+            d["vulInherent"] = 4
+        elif d["rsvInherent"] == 3:
+            d["vulInherent"] = 3
+        elif d["rsvInherent"] == 4:
+            d["vulInherent"] = 2
+        elif d["rsvInherent"] == 5:
+            d["vulInherent"] = 1
+    elif d["tcOWASP"] == 4:
+        if d["rsvInherent"] == 1:
+            d["vulInherent"] = 5
+        elif d["rsvInherent"] == 2:
+            d["vulInherent"] = 5
+        elif d["rsvInherent"] == 3:
+            d["vulInherent"] = 4
+        elif d["rsvInherent"] == 4:
+            d["vulInherent"] = 3
+        elif d["rsvInherent"] == 5:
+            d["vulInherent"] = 2
+    elif d["tcOWASP"] == 5:
+        if d["rsvInherent"] == 1:
+            d["vulInherent"] = 5
+        elif d["rsvInherent"] == 2:
+            d["vulInherent"] = 5
+        elif d["rsvInherent"] == 3:
+            d["vulInherent"] = 5
+        elif d["rsvInherent"] == 4:
+            d["vulInherent"] = 4
+        elif d["rsvInherent"] == 5:
+            d["vulInherent"] = 3
 
+    if d["tcOWASP"] == 1:
+        if d["rsvResidual"] == 1:
+            d["vulResidual"] = 3
+        elif d["rsvResidual"] == 2:
+            d["vulResidual"] = 2
+        elif d["rsvResidual"] == 3:
+            d["vulResidual"] = 1
+        elif d["rsvResidual"] == 4:
+            d["vulResidual"] = 1
+        elif d["rsvResidual"] == 5:
+            d["vulResidual"] = 1
+    elif d["tcOWASP"] == 2:
+        if d["rsvResidual"] == 1:
+            d["vulResidual"] = 4
+        elif d["rsvResidual"] == 2:
+            d["vulResidual"] = 3
+        elif d["rsvResidual"] == 3:
+            d["vulResidual"] = 2
+        elif d["rsvResidual"] == 4:
+            d["vulResidual"] = 1
+        elif d["rsvResidual"] == 5:
+            d["vulResidual"] = 1
+    elif d["tcOWASP"] == 3:
+        if d["rsvResidual"] == 1:
+            d["vulResidual"] = 5
+        elif d["rsvResidual"] == 2:
+            d["vulResidual"] = 4
+        elif d["rsvResidual"] == 3:
+            d["vulResidual"] = 3
+        elif d["rsvResidual"] == 4:
+            d["vulResidual"] = 2
+        elif d["rsvResidual"] == 5:
+            d["vulResidual"] = 1
+    elif d["tcOWASP"] == 4:
+        if d["rsvResidual"] == 1:
+            d["vulResidual"] = 5
+        elif d["rsvResidual"] == 2:
+            d["vulResidual"] = 5
+        elif d["rsvResidual"] == 3:
+            d["vulResidual"] = 4
+        elif d["rsvResidual"] == 4:
+            d["vulResidual"] = 3
+        elif d["rsvResidual"] == 5:
+            d["vulResidual"] = 2
+    elif d["tcOWASP"] == 5:
+        if d["rsvResidual"] == 1:
+            d["vulResidual"] = 5
+        elif d["rsvResidual"] == 2:
+            d["vulResidual"] = 5
+        elif d["rsvResidual"] == 3:
+            d["vulResidual"] = 5
+        elif d["rsvResidual"] == 4:
+            d["vulResidual"] = 4
+        elif d["rsvResidual"] == 5:
+            d["vulResidual"] = 3
 
-    if temp < 5:
-        d["vulInherent"] = 1
-    elif temp == 5:
-        d["vulInherent"] = 2
-    elif temp == 6:
-        d["vulInherent"] = 3
-    elif temp == 7:
-        d["vulInherent"] = 4
-    elif temp > 7:
-        d["vulInherent"] = 5
-    else:
-        print("INVALID OUTPUT FOR VULNERABILITY")
-    
     return d
 
 #Function to calculate primary loss event frequency
 def primaryLossEventFrequency(d):
     #primary loss event frequency variable
     d["plefInherent"] = 0
+    d["plefResidual"] = 0
 
     #temporary variable to hold sum
-    temp = d["tefInherent"] + d["vulInherent"]
+    temp1 = d["tefInherent"] + d["vulInherent"]
+    temp2 = d["tefResidual"] + d["vulResidual"]
 
-    if temp < 5:
+    if temp1 < 5:
         d["plefInherent"] = 1
-    elif temp == 5:
+    elif temp1 == 5:
         d["plefInherent"] = 2
-    elif temp == 6:
+    elif temp1 == 6:
         d["plefInherent"] = 3
-    elif temp == 7:
+    elif temp1 == 7:
         d["plefInherent"] = 4
-    elif temp > 7:
+    elif temp1 > 7:
         d["plefInherent"] = 5
+    else:
+        print("INVALID OUTPUT FOR PRIMARY LOSS EVENT FREQUENCY")
+
+    if temp2 < 5:
+        d["plefResidual"] = 1
+    elif temp2 == 5:
+        d["plefResidual"] = 2
+    elif temp2 == 6:
+        d["plefResidual"] = 3
+    elif temp2 == 7:
+        d["plefResidual"] = 4
+    elif temp2 > 7:
+        d["plefResidual"] = 5
     else:
         print("INVALID OUTPUT FOR PRIMARY LOSS EVENT FREQUENCY")
 
@@ -267,20 +393,35 @@ def primaryLossEventFrequency(d):
 def primaryRisk(d):
     #primary risk variable
     d["priskInherent"] = 0
+    d["priskResidual"] = 0
 
     #temporary variable to hold sum
-    temp = d["plefInherent"] + d["plmrInherent"]
+    temp1 = d["plefInherent"] + d["plmrInherent"]
+    temp2 = d["plefResidual"] + d["plmrResidual"]
     
-    if temp < 5:
+    if temp1 < 5:
         d["priskInherent"] = 1
-    elif temp == 5:
+    elif temp1 == 5:
         d["priskInherent"] = 2
-    elif temp == 6:
+    elif temp1 == 6:
         d["priskInherent"] = 3
-    elif temp == 7:
+    elif temp1 == 7:
         d["priskInherent"] = 4
-    elif temp > 7:
+    elif temp1 > 7:
         d["priskInherent"] = 5
+    else:
+        print("INVALID OUTPUT FOR PRIMARY RISK")
+
+    if temp2 < 5:
+        d["priskResidual"] = 1
+    elif temp2 == 5:
+        d["priskResidual"] = 2
+    elif temp2 == 6:
+        d["priskResidual"] = 3
+    elif temp2 == 7:
+        d["priskResidual"] = 4
+    elif temp2 > 7:
+        d["priskResidual"] = 5
     else:
         print("INVALID OUTPUT FOR PRIMARY RISK")
 
@@ -290,21 +431,35 @@ def primaryRisk(d):
 def secondaryLossEventFrequency(d):
     #secondary loss event frequency variable
     d["sLEFInherent"] = 0
+    d["sLEFResidual"] = 0
 
     #temporary variable to hold sum
-    temp = d["slpPer"] + d["plefInherent"]
-    print(temp)
+    temp1 = d["slpPer"] + d["plefInherent"]
+    temp2 = d["slpPer"] + d["plefResidual"]
 
-    if temp < 5:
+    if temp1 < 5:
         d["sLEFInherent"] = 1
-    elif temp == 5:
+    elif temp1 == 5:
         d["sLEFInherent"] = 2
-    elif temp == 6:
+    elif temp1 == 6:
         d["sLEFInherent"] = 3
-    elif temp == 7:
+    elif temp1 == 7:
         d["sLEFInherent"] = 4
-    elif temp > 7:
+    elif temp1 > 7:
         d["sLEFInherent"] = 5
+    else:
+        print("INVALID OUTPUT FOR SECONDARY LOSS EVENT FREQUENCY")
+
+    if temp2 < 5:
+        d["sLEFResidual"] = 1
+    elif temp2 == 5:
+        d["sLEFResidual"] = 2
+    elif temp2 == 6:
+        d["sLEFResidual"] = 3
+    elif temp2 == 7:
+        d["sLEFResidual"] = 4
+    elif temp2 > 7:
+        d["sLEFResidual"] = 5
     else:
         print("INVALID OUTPUT FOR SECONDARY LOSS EVENT FREQUENCY")
 
@@ -314,20 +469,35 @@ def secondaryLossEventFrequency(d):
 def secondaryRisk(d):
     #secondary risk variable
     d["sriskInherent"] = 0
+    d["sriskResidual"] = 0
 
     #temporary variable to hold sum
-    temp = d["sLEFInherent"] + d["slmrInherent"]
+    temp1 = d["sLEFInherent"] + d["slmrInherent"]
+    temp2 = d["sLEFResidual"] + d["slmrResidual"]
 
-    if temp < 5:
+    if temp1 < 5:
         d["sriskInherent"] = 1
-    elif temp == 5:
+    elif temp1 == 5:
         d["sriskInherent"] = 2
-    elif temp == 6:
+    elif temp1 == 6:
         d["sriskInherent"] = 3
-    elif temp == 7:
+    elif temp1 == 7:
         d["sriskInherent"] = 4
-    elif temp > 7:
+    elif temp1 > 7:
         d["sriskInherent"] = 5
+    else:
+        print("INVALID OUTPUT FOR SECONDARY RISK")
+
+    if temp2 < 5:
+        d["sriskResidual"] = 1
+    elif temp2 == 5:
+        d["sriskResidual"] = 2
+    elif temp2 == 6:
+        d["sriskResidual"] = 3
+    elif temp2 == 7:
+        d["sriskResidual"] = 4
+    elif temp2 > 7:
+        d["sriskResidual"] = 5
     else:
         print("INVALID OUTPUT FOR SECONDARY RISK")
 
@@ -337,61 +507,7 @@ def secondaryRisk(d):
 def overallRisk(d):
     #overall risk variable
     d["ovrInherent"] = max(d["priskInherent"], d["sriskInherent"])
-
-    """
-    if priskInherent == 1 and sriskInherent == 1:
-        ovrInherent = 1
-    elif priskInherent == 1 and sriskInherent == 2:
-        ovrInherent = 2
-    elif priskInherent == 1 and sriskInherent == 3:
-        ovrInherent = 3
-    elif priskInherent == 1 and sriskInherent == 4:
-        ovrInherent = 4
-    elif priskInherent == 1 and sriskInherent == 5:
-        ovrInherent = 5
-    elif priskInherent == 2 and sriskInherent == 1:
-        ovrInherent = 2
-    elif priskInherent == 2 and sriskInherent == 2:
-        ovrInherent = 2
-    elif priskInherent == 2 and sriskInherent == 3:
-        ovrInherent = 3
-    elif priskInherent == 2 and sriskInherent == 4:
-        ovrInherent = 4
-    elif priskInherent == 2 and sriskInherent == 5:
-        ovrInherent = 5
-    elif priskInherent == 3 and sriskInherent == 1:
-        ovrInherent = 3
-    elif priskInherent == 3 and sriskInherent == 2:
-        ovrInherent = 3
-    elif priskInherent == 3 and sriskInherent == 3:
-        ovrInherent = 3
-    elif priskInherent == 3 and sriskInherent == 4:
-        ovrInherent = 4
-    elif priskInherent == 3 and sriskInherent == 5:
-        ovrInherent = 5
-    elif priskInherent == 4 and sriskInherent == 1:
-        ovrInherent = 4
-    elif priskInherent == 4 and sriskInherent == 2:
-        ovrInherent = 4
-    elif priskInherent == 4 and sriskInherent == 3:
-        ovrInherent = 4
-    elif priskInherent == 4 and sriskInherent == 4:
-        ovrInherent = 4
-    elif priskInherent == 4 and sriskInherent == 5:
-        ovrInherent = 5
-    elif priskInherent == 5 and sriskInherent == 1:
-        ovrInherent = 5
-    elif priskInherent == 5 and sriskInherent == 2:
-        ovrInherent = 5
-    elif priskInherent == 5 and sriskInherent == 3:
-        ovrInherent = 5
-    elif priskInherent == 5 and sriskInherent == 4:
-        ovrInherent = 5
-    elif priskInherent == 5 and sriskInherent == 5:
-        ovrInherent = 5
-    else:
-        print("INVALID OUTPUT FOR OVERALL RISK")
-    """
+    d["ovrResidual"] = max(d["priskResidual"], d["sriskResidual"])
 
     return d
 
@@ -402,6 +518,7 @@ def overallRisk(d):
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 #Function for translating primary risk integer values to strings
+"""
 def translatePrisk(d):
     if d["priskInherent"] == 1:
         print("Primary Risk: INHERENT=Very Low")
@@ -445,7 +562,7 @@ def translateOrisk(d):
         print("Overall Risk: INHERENT=Very High")
     else:
         print("ERROR IN PRIMARY RISK TRANSLATION")
-
+"""
 #___________________________________________________________________________________________________________________________________#
 
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
@@ -463,16 +580,17 @@ def display(d):
     print("Resistance Strength Vulnerability: INHERENT=" + str(d["rsvInherent"]) + " CONTROLS=" + str(d["rsvControls"]) + " RESIDUAL=" + str(d["rsvResidual"]))
     print("Contact Frequency Avoidance INHERENT=" + str(d["cfaInherent"]) + " CONTROLS=" + str(d["cfaControls"]) + " RESIDUAL=" + str(d["cfaResidual"]))
     print("Threat Capability OWASP=" + str(d["tcOWASP"]))
-    print("Threat Event Frequency: INHERENT=" + str(d["tefInherent"]))
-    print("Vulnerability: INHERENT=" + str(d["vulInherent"]))
+    print("Threat Event Frequency: INHERENT=" + str(d["tefInherent"]) + " RESIDUAL=" + str(d["tefResidual"]))
+    print("Vulnerability: INHERENT=" + str(d["vulInherent"]) + " RESIDUAL=" + str(d["vulResidual"]))
     print("Secondary Loss Probability %=" + str(d["slpPer"]))
-    print("Primary Loss Event Frequency: INHERENT=" + str(d["plefInherent"]))
+    print("Primary Loss Event Frequency: INHERENT=" + str(d["plefInherent"]) + " RESIDUAL=" + str(d["plefResidual"]))
     print("Primary Loss Magnitude Responsive INHERENT=" + str(d["plmrInherent"]) + " CONTROLS=" + str(d["plmrControls"]) + " RESIDUAL=" + str(d["plmrResidual"]))
     print("Secondary Loss Magnitude Responsive INHERENT=" + str(d["slmrInherent"]) + " CONTROLS=" + str(d["slmrControls"]) + " RESIDUAL=" + str(d["slmrResidual"]))
-    print("Secondary Loss Event Frequency: INHERENT=" + str(d["sLEFInherent"]))
-    translatePrisk(d)
-    translateSrisk(d)
-    translateOrisk(d)
+    print("Secondary Loss Event Frequency: INHERENT=" + str(d["sLEFInherent"]) + " RESIDUAL=" + str(d["sLEFResidual"]))
+    print("Primary Risk: INHERENT=" + str(d["priskInherent"]) + " RESIDUAL=" + str(d["priskResidual"]))
+    print("Secondary Risk: INHERENT=" + str(d["sriskInherent"]) + " RESIDUAL=" + str(d["sriskResidual"]))
+    print("Overall Risk: INHERENT=" + str(d["ovrInherent"]) + " RESIDUAL=" + str(d["ovrResidual"]))
+    
 
 #___________________________________________________________________________________________________________________________________#
 
