@@ -18,13 +18,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ControlledOpenSelect() {
+export default function ControlledOpenSelect(props) {
   const classes = useStyles();
   const [source, setSource] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
     setSource(event.target.value);
+    if (typeof props.onChange == "function") props.onChange(event);
   };
 
   const handleClose = () => {
@@ -38,7 +39,7 @@ export default function ControlledOpenSelect() {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Matrix</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">{props.label}</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
@@ -48,15 +49,7 @@ export default function ControlledOpenSelect() {
           value={source}
           onChange={handleChange}
         >
-          <MenuItem value={"overall.png"}>
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={"overall.png"}>Overall Risk</MenuItem>
-          <MenuItem value={"primary.png"}>Primary Risk</MenuItem>
-          <MenuItem value={"secondary.png"}>Secondary Risk</MenuItem>
-          <MenuItem value={"primLoss.png"}>Loss Event Frequency</MenuItem>
-          <MenuItem value={"vulnerability.png"}>Vulnerability</MenuItem>
-          <MenuItem value={"secLoss.png"}>Secondary Loss Event Frequency</MenuItem>
+          {props.children}
         </Select>
       </FormControl>
     </div>
