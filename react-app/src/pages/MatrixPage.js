@@ -4,10 +4,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './Matrix.css';
-
+import {Dropdown} from '../components/dropdown'
 
 class MatrixPage extends React.Component {
     constructor(props) {
@@ -35,9 +33,6 @@ class MatrixPage extends React.Component {
 	<div>
 		<h1>Documentation</h1>
 		<img src={this.state.source} /> 
-		<Button onClick={this.handleOpen}>
-			Select Matrix
-		</Button>
 		<div class="formControl">
 			<div id="demo-controlled-open-select-label">Matrix</div>
 			<Select
@@ -58,6 +53,7 @@ class MatrixPage extends React.Component {
 				<MenuItem value={"vulnerability.png"}>Vulnerability</MenuItem>
 				<MenuItem value={"secLoss.png"}>Secondary Loss Event Frequency</MenuItem>
 			</Select>
+			<Dropdown/>
 		</div>
 	</div>);
 }
