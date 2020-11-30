@@ -8,22 +8,24 @@ class RiskPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            analysisData: {
-                contactFrequencyAvoidanceInherent: 1,
-                contactFrequencyAvoidanceControls: 1,
-                probabilityOfActionDeterrenceInherent: 1,
-                probabilityOfActionDeterrenceControls: 1,
-                threatCapability: 1,
-                resistanceStrengthVulnerabilityInherent: 1,
-                resistanceStrengthVulnerabilityControls: 1,
-                primaryLossMagnitudeResponsiveInherent: 1,
-                primaryLossMagnitudeResponsiveControls: 1,
-                secondaryLossMagnitudeResponsiveInherent: 1,
-                secondaryLossMagnitudeResponsiveControls: 1,
-                secondaryLossProbability: 1
-            }
+            analysisData: this.emptyData
         };
-    } 
+    }
+
+    emptyData = {
+        contactFrequencyAvoidanceInherent: '',
+        contactFrequencyAvoidanceControls: '',
+        probabilityOfActionDeterrenceInherent: '',
+        probabilityOfActionDeterrenceControls: '',
+        threatCapability: '',
+        resistanceStrengthVulnerabilityInherent: '',
+        resistanceStrengthVulnerabilityControls: '',
+        primaryLossMagnitudeResponsiveInherent: '',
+        primaryLossMagnitudeResponsiveControls: '',
+        secondaryLossMagnitudeResponsiveInherent: '',
+        secondaryLossMagnitudeResponsiveControls: '',
+        secondaryLossProbability: ''
+    }
 
     runAnalysis = () => {
         // send a POST request to the /runAnalysis endpoint with the analysis data
@@ -38,6 +40,19 @@ class RiskPage extends React.Component {
         });
     }
 
+    setInput(name, value) {
+        let data = Object.assign({},this.state.analysisData);
+        data[name] = value;
+        this.setState({analysisData: data});
+        console.log(data)
+    }
+
+    reset = () => {
+        this.setState({
+            analysisData: this.emptyData
+        })
+    }
+
     render() {
           return (
               <Grid container direction = "column">
@@ -50,7 +65,10 @@ class RiskPage extends React.Component {
                              <Grid item xs = {6}>Probability of Action Deterrence</Grid>
                             <Grid item xs = {6}><FormControl>
                                     <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.contactFrequencyAvoidanceInherent}
+                                    onChange = {(e) => this.setInput("contactFrequencyAvoidanceInherent", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -60,7 +78,10 @@ class RiskPage extends React.Component {
                                 </FormControl>
                                 <FormControl>
                                 <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.contactFrequencyAvoidanceControls}
+                                    onChange = {(e) => this.setInput("contactFrequencyAvoidanceControls", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -81,7 +102,10 @@ class RiskPage extends React.Component {
                         </Grid>
                             <Grid item xs = {6}><FormControl>
                                     <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.probabilityOfActionDeterrenceInherent}
+                                    onChange = {(e) => this.setInput("probabilityOfActionDeterrenceInherent", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -91,7 +115,10 @@ class RiskPage extends React.Component {
                                 </FormControl>
                                 <FormControl>
                                 <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.probabilityOfActionDeterrenceControls}
+                                    onChange = {(e) => this.setInput("ProbabilityOfActionDeterrenceControls", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -113,7 +140,10 @@ class RiskPage extends React.Component {
                         <Grid item xs = {6}>Resistance Strength Vulnerability</Grid>
                         <Grid item xs = {6}><FormControl>
                                 <InputLabel>OWASP</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.threatCapability}
+                                    onChange = {(e) => this.setInput("threatCapability", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -123,7 +153,10 @@ class RiskPage extends React.Component {
                                 </FormControl></Grid>
                         <Grid item xs = {6}><FormControl>
                                     <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.resistanceStrengthVulnerabilityInherent}
+                                    onChange = {(e) => this.setInput("resistanceStrengthVulnerabilityInherent", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -133,7 +166,10 @@ class RiskPage extends React.Component {
                                 </FormControl>
                                 <FormControl>
                                 <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.resistanceStrengthVulnerabilityControls}
+                                    onChange = {(e) => this.setInput("resistanceStrengthVulnerabilityControls", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -155,7 +191,10 @@ class RiskPage extends React.Component {
                         <Grid item xs = {6}>Secondary Loss Magnitude Responsive</Grid>
                         <Grid item xs = {6}><FormControl>
                                     <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.primaryLossMagnitudeResponsiveInherent}
+                                    onChange = {(e) => this.setInput("primaryLossMagnitudeResponsiveInherent", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -165,7 +204,10 @@ class RiskPage extends React.Component {
                                 </FormControl>
                                 <FormControl>
                                 <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.primaryLossMagnitudeResponsiveControls}
+                                    onChange = {(e) => this.setInput("primaryLossMagnitudeResponsiveControls", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -185,7 +227,10 @@ class RiskPage extends React.Component {
                                 </FormControl></Grid>
                         <Grid item xs = {6}><FormControl>
                                     <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.secondaryLossMagnitudeResponsiveInherent}
+                                    onChange = {(e) => this.setInput("secondaryLossMagnitudeResponsiveInherent", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -195,7 +240,10 @@ class RiskPage extends React.Component {
                                 </FormControl>
                                 <FormControl>
                                 <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined">
+                                <Select variant = "outlined"
+                                    value = {this.state.analysisData.secondaryLossMagnitudeResponsiveControls}
+                                    onChange = {(e) => this.setInput("secondaryLossMagnitudeResponsiveControls", e.target.value)}
+                                >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -215,8 +263,15 @@ class RiskPage extends React.Component {
                                 </FormControl></Grid>
                         <Grid item xs = {6}>Secondary Loss Probability</Grid>
                         <Grid item xs = {6}></Grid>
-                        <Grid item xs = {6}><TextField id="outlined-basic" label="Percent %" variant="outlined" /></Grid>
-                        <Grid item xs = {3}><Button variant="contained">Reset</Button></Grid>
+                        <Grid item xs = {6}>
+                            <TextField id="outlined-basic" variant="outlined"
+                                label="Percent %"
+                                type="number"
+                                value={this.state.analysisData.secondaryLossProbability}
+                                onChange = {(e) => this.setInput("secondaryLossProbability", Math.min(Math.max(0,e.target.value),100))}
+                            />
+                        </Grid>
+                        <Grid item xs = {3}><Button variant="contained" onClick={this.reset}>Reset</Button></Grid>
                         <Grid item xs ={3}><Button variant="contained" onClick={this.runAnalysis}>Run Analysis</Button></Grid>
                         </Grid>
                     </Grid>
