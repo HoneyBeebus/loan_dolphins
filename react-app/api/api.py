@@ -1,5 +1,6 @@
 import datetime
 import sqlite3
+import runAnalysis
 from flask import Flask
 from flask import request
 
@@ -34,68 +35,51 @@ def run_analysis():
 	# get the data sent by the request
 	analysis_data = request.get_json()
 
-	# access properties like so
-	test_prop = analysis_data["contactFrequencyAvoidanceInherent"]
-	print(f"Testing reading from analysis data: {test_prop}")
+	# run the FAIR analysis
+	analysis_data = runAnalysis.FAIR(analysis_data)
 	
-	# List of properties is:
-	# contactFrequencyAvoidanceInherent
-	# contactFrequencyAvoidanceControls
-	# probabilityOfActionDeterrenceInherent
-	# probabilityOfActionDeterrenceControls
-	# threatCapability
-	# resistanceStrengthVulnerabilityInherent
-	# resistanceStrengthVulnerabilityControls
-	# primaryLossMagnitudeInherent
-	# primaryLossMagnitudeControls
-	# secondaryLossMagnitudeInherent
-	# secondaryLossMagnitudeControls
-	# secondaryLossProbabilty
+	# # and commit to database?
+	# conn = sqlite3.connect("../../data.sqlite")
+	# c = conn.cursor()
 
-	# analysis logic can be called here.
+	# # get a new ID for the analysis
+	# c.execute("SELECT max(AID) FROM Analyses;")
+	# max_aid = c.fetchone()[0]
+	# if max_aid == None:
+	# 	aid = 0
+	# else:
+	# 	aid = max_aid + 1
 	
-	# and commit to database?
-	conn = sqlite3.connect("../../data.sqlite")
-	c = conn.cursor()
-
-	# get a new ID for the analysis
-	c.execute("SELECT max(AID) FROM Analyses;")
-	max_aid = c.fetchone()[0]
-	if max_aid == None:
-		aid = 0
-	else:
-		aid = max_aid + 1
-	
-	c.execute(
-		"INSERT INTO Analyses "
-		"(AID, UID, lossScenario, runDate, overallResidualRisk, potentialLossMagnitude, "
-		"resistanceStrengthVulnerabilityInherent, resistanceStrengthVulnerabilityControls, "
-		"probabilityOfActionDeterrenceInherent, probabilityOfActionDeterrenceControls, "
-		"contactFrequencyAvoidanceInherent, contactFrequencyAvoidanceControls, "
-		"threatCapability, secondaryLossProbability, "
-		"primaryLossMagnitudeResponsiveInherent, primaryLossMagnitudeResponsiveControls, "
-		"secondaryLossMagnitudeResponsiveInherent, secondaryLossMagnitudeResponsiveControls, "
-		"notes) "
-		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
-		(
-			aid, 1, "temporary scenario", datetime.datetime.now(), 'VL', 1,
-			analysis_data["resistanceStrengthVulnerabilityInherent"],
-			analysis_data["resistanceStrengthVulnerabilityControls"],
-			analysis_data["probabilityOfActionDeterrenceInherent"],
-			analysis_data["probabilityOfActionDeterrenceControls"],
-			analysis_data["contactFrequencyAvoidanceInherent"],
-			analysis_data["contactFrequencyAvoidanceControls"],
-			analysis_data["threatCapability"],
-			analysis_data["secondaryLossProbability"],
-			analysis_data["primaryLossMagnitudeResponsiveInherent"],
-			analysis_data["primaryLossMagnitudeResponsiveControls"],
-			analysis_data["secondaryLossMagnitudeResponsiveInherent"],
-			analysis_data["secondaryLossMagnitudeResponsiveControls"],
-			"temporary notes"
-		)
-	)
-	conn.commit()
+	# c.execute(
+	# 	"INSERT INTO Analyses "
+	# 	"(AID, UID, lossScenario, runDate, overallResidualRisk, potentialLossMagnitude, "
+	# 	"resistanceStrengthVulnerabilityInherent, resistanceStrengthVulnerabilityControls, "
+	# 	"probabilityOfActionDeterrenceInherent, probabilityOfActionDeterrenceControls, "
+	# 	"contactFrequencyAvoidanceInherent, contactFrequencyAvoidanceControls, "
+	# 	"threatCapability, secondaryLossProbability, "
+	# 	"primaryLossMagnitudeResponsiveInherent, primaryLossMagnitudeResponsiveControls, "
+	# 	"secondaryLossMagnitudeResponsiveInherent, secondaryLossMagnitudeResponsiveControls, "
+	# 	"notes) "
+	# 	"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+	# 	(
+	# 		aid, 1, "temporary scenario", datetime.datetime.now(), 'VL', 1,
+	# 		analysis_data["resistanceStrengthVulnerabilityInherent"],
+	# 		analysis_data["resistanceStrengthVulnerabilityControls"],
+	# 		analysis_data["probabilityOfActionDeterrenceInherent"],
+	# 		analysis_data["probabilityOfActionDeterrenceControls"],
+	# 		analysis_data["contactFrequencyAvoidanceInherent"],
+	# 		analysis_data["contactFrequencyAvoidanceControls"],
+	# 		analysis_data["threatCapability"],
+	# 		analysis_data["secondaryLossProbability"],
+	# 		analysis_data["primaryLossMagnitudeResponsiveInherent"],
+	# 		analysis_data["primaryLossMagnitudeResponsiveControls"],
+	# 		analysis_data["secondaryLossMagnitudeResponsiveInherent"],
+	# 		analysis_data["secondaryLossMagnitudeResponsiveControls"],
+	# 		"temporary notes"
+	# 	)
+	# )
+	# conn.commit()
 
 
 	# respond back to the client with something here
-	return {}
+	return analysis_data

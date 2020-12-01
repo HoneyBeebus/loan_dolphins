@@ -590,7 +590,64 @@ def display(d):
     print("Primary Risk: INHERENT=" + str(d["priskInherent"]) + " RESIDUAL=" + str(d["priskResidual"]))
     print("Secondary Risk: INHERENT=" + str(d["sriskInherent"]) + " RESIDUAL=" + str(d["sriskResidual"]))
     print("Overall Risk: INHERENT=" + str(d["ovrInherent"]) + " RESIDUAL=" + str(d["ovrResidual"]))
-    
+
+#___________________________________________________________________________________________________________________________________#
+
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
+#                                                      TRANSLATING FUNCTIONS                                                            #
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
+# translate long names to short names
+def translate_to_short(d):
+    return {
+		"cfaInherent": d["contactFrequencyAvoidanceInherent"],
+		"cfaControls": d["contactFrequencyAvoidanceControls"],
+		"padInherent": d["probabilityOfActionDeterrenceInherent"],
+		"padControls": d["probabilityOfActionDeterrenceControls"],
+		"tcOWASP": d["threatCapability"],
+		"rsvInherent": d["resistanceStrengthVulnerabilityInherent"],
+		"rsvControls": d["resistanceStrengthVulnerabilityControls"],
+		"plmrInherent": d["primaryLossMagnitudeResponsiveInherent"],
+		"plmrControls": d["primaryLossMagnitudeResponsiveControls"],
+		"slmrInherent": d["secondaryLossMagnitudeResponsiveInherent"],
+		"slmrControls": d["secondaryLossMagnitudeResponsiveControls"],
+		"slpPer": d["secondaryLossProbability"]
+	}
+
+# translate short names to long names
+def translate_to_long(d):
+    return {
+        "contactFrequencyAvoidanceInherent": d["cfaInherent"],
+		"contactFrequencyAvoidanceControls": d["cfaControls"],
+		"probabilityOfActionDeterrenceInherent": d["padInherent"],
+		"probabilityOfActionDeterrenceControls": d["padControls"],
+		"threatCapability": d["tcOWASP"],
+		"resistanceStrengthVulnerabilityInherent": d["rsvInherent"],
+		"resistanceStrengthVulnerabilityControls": d["rsvControls"],
+		"primaryLossMagnitudeInherent": d["plmrInherent"],
+		"primaryLossMagnitudeControls": d["plmrControls"],
+		"secondaryLossMagnitudeInherent": d["slmrInherent"],
+		"secondaryLossMagnitudeControls": d["slmrControls"],
+		"secondaryLossProbabilty": d["slpPer"],
+        # new
+        "probabilityOfActionDeterrenceResidual": d["padResidual"],
+        "contactFrequencyAvoidanceResidual": d["cfaResidual"],
+        "primaryLossMagnitudeResidual": d["plmrResidual"],
+        "secondaryLossMagnitudeResidual": d["slmrResidual"],
+        "threatEventFrequencyInherent": d["tefInherent"],
+        "threatEventFrequencyResidual": d["tefResidual"],
+        "vulnerabilityInherent": d["vulInherent"],
+        "vulnerabilityResidual": d["vulResidual"],
+        "primaryLossEventFrequencyInherent": d["plefInherent"],
+        "primaryLossEventFrequencyResidual": d["plefResidual"],
+        "primaryRiskInherent": d["priskInherent"],
+        "primaryRiskResidual": d["priskResidual"],
+        "secondaryLossEventFrequencyInherent": d["sLEFInherent"],
+        "secondaryLossEventResidual": d["sLEFResidual"],
+        "secondaryRiskInherent": d["sriskInherent"],
+        "secondaryRiskResidual": d["sriskResidual"],
+        "overallRiskInherent": d["ovrInherent"],
+        "overallRiskResidual": d["ovrResidual"]
+    }
 
 #___________________________________________________________________________________________________________________________________#
 
@@ -600,6 +657,7 @@ def display(d):
 
 #Function to handle all steps of FAIR analysis
 def FAIR(d):
+    d = translate_to_short(d)
     d = residual(d)
     print("[][][][][][][]")
     d = threatEventFrequency(d)
@@ -616,7 +674,7 @@ def FAIR(d):
     print("[X][X][X][X][X][X][]")
     d = overallRisk(d)
     print("[X][X][X][X][X][X][X]")
-
+    d = translate_to_long(d)
     return d
 
 #Main driving function
@@ -630,4 +688,5 @@ def main():
 
 #______________________________________________________________________________________________________________________________________#
 
-main()
+if __name__ == '__main__':
+    main()

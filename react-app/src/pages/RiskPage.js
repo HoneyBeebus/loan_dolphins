@@ -117,7 +117,7 @@ class RiskPage extends React.Component {
                                 <InputLabel>Controls</InputLabel>
                                 <Select variant = "outlined"
                                     value = {this.state.analysisData.probabilityOfActionDeterrenceControls}
-                                    onChange = {(e) => this.setInput("ProbabilityOfActionDeterrenceControls", e.target.value)}
+                                    onChange = {(e) => this.setInput("probabilityOfActionDeterrenceControls", e.target.value)}
                                 >
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
