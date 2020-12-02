@@ -37,6 +37,12 @@ class RiskPage extends React.Component {
         .then(response => response.json()).then(data => {
             // print the response from the server
             console.log(data)
+            this.props.history.push({
+                "pathname": "/outcome",
+                "state": {
+                    analysisData: data
+                }
+            });
         });
     }
 
