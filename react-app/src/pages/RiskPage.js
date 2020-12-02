@@ -56,7 +56,7 @@ class RiskPage extends React.Component {
     render() {
           return (
               <Grid container direction = "column">
-                  <Grid item>Risk Analysis</Grid>
+                  <h1>Risk Analysis</h1>
                   <Grid item container> 
                     <Grid item xs ={2}/>
                     <Grid item xs = {8}>
@@ -82,16 +82,6 @@ class RiskPage extends React.Component {
                                     value = {this.state.analysisData.contactFrequencyAvoidanceControls}
                                     onChange = {(e) => this.setInput("contactFrequencyAvoidanceControls", e.target.value)}
                                 >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
-                                </FormControl>
-                                <FormControl>
-                                <InputLabel>Residual</InputLabel>
-                                <Select variant = "outlined">
                                 <MenuItem value = {1}>one</MenuItem>
                                 <MenuItem value = {2}>two</MenuItem>
                                 <MenuItem value = {3}>three</MenuItem>
@@ -126,16 +116,7 @@ class RiskPage extends React.Component {
                                 <MenuItem value = {5}>five</MenuItem>
                                 </Select>
                                 </FormControl>
-                                <FormControl>
-                                <InputLabel>Residual</InputLabel>
-                                <Select variant = "outlined">
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
-                                </FormControl></Grid>
+                                </Grid>
                         <Grid item xs = {6}>Threat Capability</Grid>
                         <Grid item xs = {6}>Resistance Strength Vulnerability</Grid>
                         <Grid item xs = {6}><FormControl>
@@ -177,16 +158,7 @@ class RiskPage extends React.Component {
                                 <MenuItem value = {5}>five</MenuItem>
                                 </Select>
                                 </FormControl>
-                                <FormControl>
-                                <InputLabel>Residual</InputLabel>
-                                <Select variant = "outlined">
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
-                                </FormControl></Grid>
+                                </Grid>
                         <Grid item xs = {6}>Primary Loss Magnitude Responsive</Grid>
                         <Grid item xs = {6}>Secondary Loss Magnitude Responsive</Grid>
                         <Grid item xs = {6}><FormControl>
@@ -215,16 +187,7 @@ class RiskPage extends React.Component {
                                 <MenuItem value = {5}>five</MenuItem>
                                 </Select>
                                 </FormControl>
-                                <FormControl>
-                                <InputLabel>Residual</InputLabel>
-                                <Select variant = "outlined">
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
-                                </FormControl></Grid>
+                                </Grid>
                         <Grid item xs = {6}><FormControl>
                                     <InputLabel>Inherent</InputLabel>
                                 <Select variant = "outlined"
@@ -251,16 +214,7 @@ class RiskPage extends React.Component {
                                 <MenuItem value = {5}>five</MenuItem>
                                 </Select>
                                 </FormControl>
-                                <FormControl>
-                                <InputLabel>Residual</InputLabel>
-                                <Select variant = "outlined">
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
-                                </FormControl></Grid>
+                                </Grid>
                         <Grid item xs = {6}>Secondary Loss Probability</Grid>
                         <Grid item xs = {6}></Grid>
                         <Grid item xs = {6}>
