@@ -9,7 +9,6 @@ import OutcomePage from './pages/OutcomePage';
 import MatrixPage from './pages/MatrixPage';
 import RiskPage from './pages/RiskPage';
 
-
 function Routes() {
 	return (
 		<Switch>
