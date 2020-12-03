@@ -3,7 +3,6 @@ import { Button, TextField } from '@material-ui/core';
 import Lgrid from '../components/Lgrid';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import Backdrop from '../components/Backdrop';
 
 class LoginPage extends React.Component {
 	constructor(props) {
@@ -23,7 +22,6 @@ class LoginPage extends React.Component {
 	render() {
 		return (
 		<div>
-			<Backdrop />
 			<Lgrid>
 				<Grid item xs={4}>
 					<h1>Login</h1>

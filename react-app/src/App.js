@@ -11,11 +11,13 @@ import {Navigation} from './components/navBar'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import BasicLoginWrapper from './components/BasicLoginWrapper'
 
+import Backdrop from './components/Backdrop';
 
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
+			<Backdrop />
       <BasicLoginWrapper>
         <Navigation/>
         <Switch>

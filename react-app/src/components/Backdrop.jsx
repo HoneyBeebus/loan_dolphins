@@ -20,14 +20,12 @@ export default function SimpleBackdrop() {
   React.useEffect(() => {
     setOpen(!open); // this will fire on every change :(
 }, []);
+  
 
   return (
     <div>
-      <Backdrop className={classes.backdrop} open={open}>
+      <Backdrop className={classes.backdrop} open={open} onLoad={() => {window.setTimeout(handleToggle, 1000);}}>
         <img class='App-logo' src='oportun_logo_circle.png' />
-        <Button variant="contained" color="primary" onClick={handleToggle}>
-            Welcome
-        </Button>
       </Backdrop>
     </div>
   );
