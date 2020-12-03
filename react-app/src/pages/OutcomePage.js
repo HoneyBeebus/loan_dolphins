@@ -32,14 +32,21 @@ class OutcomePage extends React.Component {
 	  });
   }
 
+
   render() {
+	  let data = {}
+	  if (this.props.location.state && this.props.location.state.analysisData) {
+		  data = this.props.location.state.analysisData
+	  }
 		return (<div>
-			<h1>Outcome</h1>
 			<br></br>
-			<h4>Does the following look correct?</h4>
+			<br></br>
+			<h1>Outcome of Analysis</h1>
+			<br></br>
 			<hr></hr>
-			<br></br>
-			<DataTree/>
+			<DataTree data={data}/>
+			<hr></hr>
+			<h2>Would you like to save this result?</h2>
 			<br></br>
 			<Button variant="contained" color="primary" spacing="1" onClick={this.submit}>Yes</Button>
 			<br></br>
