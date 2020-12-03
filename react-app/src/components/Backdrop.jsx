@@ -13,10 +13,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleBackdrop() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleToggle = () => {
     setOpen(!open);
   };
+  React.useEffect(() => {
+    setOpen(!open); // this will fire on every change :(
+}, []);
 
   return (
     <div>
