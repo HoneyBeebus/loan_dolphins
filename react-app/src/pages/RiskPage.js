@@ -12,6 +12,14 @@ class RiskPage extends React.Component {
         };
     }
 
+    componentDidMount() {
+        if (this.props.location.state && this.props.location.state.analysisData) {
+            this.setState({
+                analysisData: this.props.location.state.analysisData
+            })
+        }
+    }
+
     emptyData = {
         contactFrequencyAvoidanceInherent: '',
         contactFrequencyAvoidanceControls: '',

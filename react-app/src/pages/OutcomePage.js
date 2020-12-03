@@ -9,6 +9,29 @@ class OutcomePage extends React.Component {
 
 		};
   }
+
+  submit = () => {
+	fetch("/commit", {
+		method: "POST",
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify(this.props.location.state.analysisData)
+	})
+	.then(response => response.json()).then(data => {
+		if (data.success) {
+			this.props.history.push("/risk");
+		}
+	});
+  }
+
+  cancel = () => {
+	  this.props.history.push({
+		  "pathname": "/risk",
+		  "state": {
+			  analysisData: this.props.location.state.analysisData
+		  }
+	  });
+  }
+
   render() {
 		return (<div>
 			<h1>Outcome</h1>
@@ -18,10 +41,10 @@ class OutcomePage extends React.Component {
 			<br></br>
 			<DataTree/>
 			<br></br>
-			<Button variant="contained" color="primary" spacing="1">Yes</Button>
+			<Button variant="contained" color="primary" spacing="1" onClick={this.submit}>Yes</Button>
 			<br></br>
 			<br></br>
-		  	<Button variant="outlined" color="primary" spacing="1">No</Button>
+		  	<Button variant="outlined" color="primary" spacing="1" onClick={this.cancel}>No</Button>
 
 		</div>
 		);
