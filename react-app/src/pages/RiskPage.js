@@ -19,11 +19,6 @@ class RiskPage extends React.Component {
                 analysisData: this.props.location.state.analysisData
             })
         }
-        let data = Object.assign({}, this.state.analysisData);
-        data.uid = Cookies.get("uid");
-        this.setState({
-            analysisData: data
-        });
     }
 
     emptyData = {
@@ -51,6 +46,7 @@ class RiskPage extends React.Component {
         .then(response => response.json()).then(data => {
             // print the response from the server
             console.log(data)
+            data.uid = Cookies.get("uid");
             this.props.history.push({
                 "pathname": "/outcome",
                 "state": {

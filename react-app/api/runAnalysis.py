@@ -619,6 +619,7 @@ def translate_to_long(d):
     short = d["meta"]
     short["probabilityOfActionDeterrenceResidual"] = d["padResidual"]
     short["contactFrequencyAvoidanceResidual"] = d["cfaResidual"]
+    short["resistanceStrengthVulnerabilityResidual"] = d["rsvResidual"]
     short["primaryLossMagnitudeResponsiveResidual"] = d["plmrResidual"]
     short["secondaryLossMagnitudeResponsiveResidual"] = d["slmrResidual"]
     short["threatEventFrequencyInherent"] = d["tefInherent"]

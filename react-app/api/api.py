@@ -99,6 +99,7 @@ def commit_results():
 		"potentialLossMagnitude, "
 		"resistanceStrengthVulnerabilityInherent, "
 		"resistanceStrengthVulnerabilityControls, "
+		"resistanceStrengthVulnerabilityResidual, "
 		"probabilityOfActionDeterrenceInherent, "
 		"probabilityOfActionDeterrenceControls, "
 		"probabilityOfActionDeterrenceResidual, "
@@ -114,7 +115,7 @@ def commit_results():
 		"secondaryLossMagnitudeResponsiveControls, "
 		"secondaryLossMagnitudeResponsiveResidual, "
 		"notes) "
-		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
 		(
 			aid, analysis_data["uid"], "temporary scenario", datetime.datetime.now(),
 			analysis_data["overallRiskInherent"],
@@ -135,6 +136,7 @@ def commit_results():
 			None,
 			analysis_data["resistanceStrengthVulnerabilityInherent"],
 			analysis_data["resistanceStrengthVulnerabilityControls"],
+			analysis_data["resistanceStrengthVulnerabilityResidual"],
 			analysis_data["probabilityOfActionDeterrenceInherent"],
 			analysis_data["probabilityOfActionDeterrenceControls"],
 			analysis_data["probabilityOfActionDeterrenceResidual"],
