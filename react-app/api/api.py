@@ -151,7 +151,7 @@ def commit_results():
 			analysis_data["secondaryLossMagnitudeResponsiveInherent"],
 			analysis_data["secondaryLossMagnitudeResponsiveControls"],
 			analysis_data["secondaryLossMagnitudeResponsiveResidual"],
-			"temporary notes"
+			analysis_data["notes"]
 		)
 	)
 	conn.commit()

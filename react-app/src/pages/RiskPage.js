@@ -241,7 +241,12 @@ class RiskPage extends React.Component {
                                 onChange = {(e) => this.setInput("secondaryLossProbability", Math.min(Math.max(0,e.target.value),100))}
                             />
                         </Grid>
-                         <Grid item xs = {6}><TextField variant = "outlined" multiline label = "Notes"></TextField></Grid>
+                         <Grid item xs = {6}>
+                             <TextField variant = "outlined" multiline label = "Notes"
+                                value = {this.state.analysisData.notes}
+                                onChange={(e) => this.setInput("notes", e.target.value)}
+                             />
+                         </Grid>
                         <Grid><Button disabled></Button></Grid>
                         </Grid>
                     </Grid>
