@@ -37,49 +37,101 @@ def run_analysis():
 
 	# run the FAIR analysis
 	analysis_data = runAnalysis.FAIR(analysis_data)
-	
-	# # and commit to database?
-	# conn = sqlite3.connect("../../data.sqlite")
-	# c = conn.cursor()
-
-	# # get a new ID for the analysis
-	# c.execute("SELECT max(AID) FROM Analyses;")
-	# max_aid = c.fetchone()[0]
-	# if max_aid == None:
-	# 	aid = 0
-	# else:
-	# 	aid = max_aid + 1
-	
-	# c.execute(
-	# 	"INSERT INTO Analyses "
-	# 	"(AID, UID, lossScenario, runDate, overallResidualRisk, potentialLossMagnitude, "
-	# 	"resistanceStrengthVulnerabilityInherent, resistanceStrengthVulnerabilityControls, "
-	# 	"probabilityOfActionDeterrenceInherent, probabilityOfActionDeterrenceControls, "
-	# 	"contactFrequencyAvoidanceInherent, contactFrequencyAvoidanceControls, "
-	# 	"threatCapability, secondaryLossProbability, "
-	# 	"primaryLossMagnitudeResponsiveInherent, primaryLossMagnitudeResponsiveControls, "
-	# 	"secondaryLossMagnitudeResponsiveInherent, secondaryLossMagnitudeResponsiveControls, "
-	# 	"notes) "
-	# 	"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
-	# 	(
-	# 		aid, 1, "temporary scenario", datetime.datetime.now(), 'VL', 1,
-	# 		analysis_data["resistanceStrengthVulnerabilityInherent"],
-	# 		analysis_data["resistanceStrengthVulnerabilityControls"],
-	# 		analysis_data["probabilityOfActionDeterrenceInherent"],
-	# 		analysis_data["probabilityOfActionDeterrenceControls"],
-	# 		analysis_data["contactFrequencyAvoidanceInherent"],
-	# 		analysis_data["contactFrequencyAvoidanceControls"],
-	# 		analysis_data["threatCapability"],
-	# 		analysis_data["secondaryLossProbability"],
-	# 		analysis_data["primaryLossMagnitudeResponsiveInherent"],
-	# 		analysis_data["primaryLossMagnitudeResponsiveControls"],
-	# 		analysis_data["secondaryLossMagnitudeResponsiveInherent"],
-	# 		analysis_data["secondaryLossMagnitudeResponsiveControls"],
-	# 		"temporary notes"
-	# 	)
-	# )
-	# conn.commit()
-
 
 	# respond back to the client with something here
 	return analysis_data
+
+@app.route("/commit", methods=["POST"])
+def commit_results():
+	# get the request data
+	analysis_data = request.get_json()
+
+	# connect to database
+	conn = sqlite3.connect("../../data.sqlite")
+	c = conn.cursor()
+
+	# get a new ID for the analysis
+	c.execute("SELECT max(AID) FROM Analyses;")
+	max_aid = c.fetchone()[0]
+	if max_aid == None:
+		aid = 0
+	else:
+		aid = max_aid + 1
+
+	# insert into the database
+	c.execute(
+		"INSERT INTO Analyses "
+		"(AID, UID, lossScenario, runDate, "
+		"overallRiskInherent, "
+		"overallRiskResidual, "
+		"primaryRiskInherent, "
+		"primaryRiskResidual, "
+		"primaryLossEventFrequencyInherent, "
+		"primaryLossEventFrequencyResidual, "
+		"secondaryRiskInherent, "
+		"secondaryRiskResidual, "
+		"secondaryLossEventFrequencyInherent, "
+		"secondaryLossEventFrequencyResidual, "
+		"vulnerabilityInherent, "
+		"vulnerabilityResidual, "
+		"threatEventFrequencyInherent, "
+		"threatEventFrequencyResidual, "
+		"potentialLossMagnitude, "
+		"resistanceStrengthVulnerabilityInherent, "
+		"resistanceStrengthVulnerabilityControls, "
+		"probabilityOfActionDeterrenceInherent, "
+		"probabilityOfActionDeterrenceControls, "
+		"probabilityOfActionDeterrenceResidual, "
+		"contactFrequencyAvoidanceInherent, "
+		"contactFrequencyAvoidanceControls, "
+		"contactFrequencyAvoidanceResidual, "
+		"threatCapability, "
+		"secondaryLossProbability, "
+		"primaryLossMagnitudeResponsiveInherent, "
+		"primaryLossMagnitudeResponsiveControls, "
+		"primaryLossMagnitudeResponsiveResidual, "
+		"secondaryLossMagnitudeResponsiveInherent, "
+		"secondaryLossMagnitudeResponsiveControls, "
+		"secondaryLossMagnitudeResponsiveResidual, "
+		"notes) "
+		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+		(
+			aid, 1, "temporary scenario", datetime.datetime.now(),
+			analysis_data["overallRiskInherent"],
+			analysis_data["overallRiskResidual"],
+			analysis_data["primaryRiskInherent"],
+			analysis_data["primaryRiskResidual"],
+			analysis_data["primaryLossEventFrequencyInherent"],
+			analysis_data["primaryLossEventFrequencyResidual"],
+			analysis_data["secondaryRiskInherent"],
+			analysis_data["secondaryRiskResidual"],
+			analysis_data["secondaryLossEventFrequencyInherent"],
+			analysis_data["secondaryLossEventFrequencyResidual"],
+			analysis_data["vulnerabilityInherent"],
+			analysis_data["vulnerabilityResidual"],
+			analysis_data["threatEventFrequencyInherent"],
+			analysis_data["threatEventFrequencyResidual"],
+			# analysis_data["potentialLossMagnitude"],
+			None,
+			analysis_data["resistanceStrengthVulnerabilityInherent"],
+			analysis_data["resistanceStrengthVulnerabilityControls"],
+			analysis_data["probabilityOfActionDeterrenceInherent"],
+			analysis_data["probabilityOfActionDeterrenceControls"],
+			analysis_data["probabilityOfActionDeterrenceResidual"],
+			analysis_data["contactFrequencyAvoidanceInherent"],
+			analysis_data["contactFrequencyAvoidanceControls"],
+			analysis_data["contactFrequencyAvoidanceResidual"],
+			analysis_data["threatCapability"],
+			analysis_data["secondaryLossProbability"],
+			analysis_data["primaryLossMagnitudeResponsiveInherent"],
+			analysis_data["primaryLossMagnitudeResponsiveControls"],
+			analysis_data["primaryLossMagnitudeResponsiveResidual"],
+			analysis_data["secondaryLossMagnitudeResponsiveInherent"],
+			analysis_data["secondaryLossMagnitudeResponsiveControls"],
+			analysis_data["secondaryLossMagnitudeResponsiveResidual"],
+			"temporary notes"
+		)
+	)
+	conn.commit()
+
+	return {"success": True}

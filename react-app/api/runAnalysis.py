@@ -65,7 +65,7 @@ def residual(d):
         if d["padControls"] == 1 or d["padControls"] == 2:
             d["padResidual"] = 4
         elif d["padControls"] == 3:
-            d["padResdidual"] = 3
+            d["padResidual"] = 3
         elif d["padControls"] == 4:
             d["padResidual"] = 2
         elif d["padControls"] == 5:
@@ -170,7 +170,7 @@ def residual(d):
         if d["slmrControls"] == 1 or d["slmrControls"] == 2:
             d["slmrResidual"] = 4
         elif d["slmrControls"] == 3:
-            d["slmrResdidual"] = 3
+            d["slmrResidual"] = 3
         elif d["slmrControls"] == 4:
             d["slmrResidual"] = 2
         elif d["slmrControls"] == 5:
@@ -623,16 +623,16 @@ def translate_to_long(d):
 		"threatCapability": d["tcOWASP"],
 		"resistanceStrengthVulnerabilityInherent": d["rsvInherent"],
 		"resistanceStrengthVulnerabilityControls": d["rsvControls"],
-		"primaryLossMagnitudeInherent": d["plmrInherent"],
-		"primaryLossMagnitudeControls": d["plmrControls"],
-		"secondaryLossMagnitudeInherent": d["slmrInherent"],
-		"secondaryLossMagnitudeControls": d["slmrControls"],
-		"secondaryLossProbabilty": d["slpPer"],
+		"primaryLossMagnitudeResponsiveInherent": d["plmrInherent"],
+		"primaryLossMagnitudeResponsiveControls": d["plmrControls"],
+		"secondaryLossMagnitudeResponsiveInherent": d["slmrInherent"],
+		"secondaryLossMagnitudeResponsiveControls": d["slmrControls"],
+		"secondaryLossProbability": d["slpPer"],
         # new
         "probabilityOfActionDeterrenceResidual": d["padResidual"],
         "contactFrequencyAvoidanceResidual": d["cfaResidual"],
-        "primaryLossMagnitudeResidual": d["plmrResidual"],
-        "secondaryLossMagnitudeResidual": d["slmrResidual"],
+        "primaryLossMagnitudeResponsiveResidual": d["plmrResidual"],
+        "secondaryLossMagnitudeResponsiveResidual": d["slmrResidual"],
         "threatEventFrequencyInherent": d["tefInherent"],
         "threatEventFrequencyResidual": d["tefResidual"],
         "vulnerabilityInherent": d["vulInherent"],
@@ -642,7 +642,7 @@ def translate_to_long(d):
         "primaryRiskInherent": d["priskInherent"],
         "primaryRiskResidual": d["priskResidual"],
         "secondaryLossEventFrequencyInherent": d["sLEFInherent"],
-        "secondaryLossEventResidual": d["sLEFResidual"],
+        "secondaryLossEventFrequencyResidual": d["sLEFResidual"],
         "secondaryRiskInherent": d["sriskInherent"],
         "secondaryRiskResidual": d["sriskResidual"],
         "overallRiskInherent": d["ovrInherent"],
