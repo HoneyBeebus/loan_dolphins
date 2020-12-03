@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, TextField, Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import DataTree from '../components/DataTree';
 
 class OutcomePage extends React.Component {
   constructor(props) {
@@ -11,38 +12,20 @@ class OutcomePage extends React.Component {
   render() {
 		return (<div>
 			<h1>Outcome</h1>
-      <TableContainer component={Paper}>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<TableCell>Customer</TableCell>
-							<TableCell>Date of Request</TableCell>
-							<TableCell>Overall Residual Risk</TableCell>
-              <TableCell>Potential Loss Magnitude</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						<TableRow>
-							<TableCell>Ada Lovelace</TableCell>
-							<TableCell>04-21-2019</TableCell>
-							<TableCell>Very High</TableCell>
-              <TableCell>4</TableCell>
-						</TableRow>
-						<TableRow>
-							<TableCell>Ada Lovelace</TableCell>
-							<TableCell>04-21-2019</TableCell>
-							<TableCell>Very High</TableCell>
-              <TableCell>4</TableCell>
-						</TableRow>
-					</TableBody>
-				</Table>
-			</TableContainer>
-      <Button variant="contained" color="primary">Cancel</Button>
-      <Button variant="contained" color="primary">Save</Button>
-      <img src="tree.png" className="App-header" alt="logo" />
+			<br></br>
+			<h4>Does the following look correct?</h4>
+			<hr></hr>
+			<br></br>
+			<DataTree/>
+			<br></br>
+			<Button variant="contained" color="primary" spacing="1">Yes</Button>
+			<br></br>
+			<br></br>
+		  	<Button variant="outlined" color="primary" spacing="1">No</Button>
 
-    </div>);
-  }
+		</div>
+		);
+  	}
 }
 
 export default OutcomePage
