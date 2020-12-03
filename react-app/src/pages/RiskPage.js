@@ -241,10 +241,16 @@ class RiskPage extends React.Component {
                                 onChange = {(e) => this.setInput("secondaryLossProbability", Math.min(Math.max(0,e.target.value),100))}
                             />
                         </Grid>
-                        <Grid item xs = {3}><Button variant="contained" onClick={this.reset}>Reset</Button></Grid>
-                        <Grid item xs ={3}><Button variant="contained" onClick={this.runAnalysis}>Run Analysis</Button></Grid>
+                         <Grid item xs = {6}><TextField variant = "outlined" multiline label = "Notes"></TextField></Grid>
+                        <Grid><Button disabled></Button></Grid>
                         </Grid>
                     </Grid>
+                        <Grid xs = {4}></Grid>
+                         <Grid xs = {2}>
+                         <Button variant="contained" onClick={this.reset}>Reset</Button>
+                         {/* <Button variant="contained" onClick={this.runAnalysis}>Run Analysis</Button> */}
+                         </Grid>
+                         <Grid><Button variant="contained" onClick={this.runAnalysis}>Run Analysis</Button></Grid>
                     <Grid item xs ={2}/>
                     </Grid>
               </Grid>
