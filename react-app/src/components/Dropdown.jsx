@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ControlledOpenSelect(props) {
   const classes = useStyles();
   const [source, setSource] = React.useState('');
+  if (props.value !== undefined) setSource(props.value);
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {

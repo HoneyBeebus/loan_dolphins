@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, ButtonGroup, Select, MenuItem, FormControl, InputLabel, makeStyles, TextField} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Cookies from 'js-cookie';
 
 
 
@@ -18,6 +19,11 @@ class RiskPage extends React.Component {
                 analysisData: this.props.location.state.analysisData
             })
         }
+        let data = Object.assign({}, this.state.analysisData);
+        data.uid = Cookies.get("uid");
+        this.setState({
+            analysisData: data
+        });
     }
 
     emptyData = {

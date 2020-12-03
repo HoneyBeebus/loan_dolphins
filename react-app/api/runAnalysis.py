@@ -610,44 +610,32 @@ def translate_to_short(d):
 		"plmrControls": d["primaryLossMagnitudeResponsiveControls"],
 		"slmrInherent": d["secondaryLossMagnitudeResponsiveInherent"],
 		"slmrControls": d["secondaryLossMagnitudeResponsiveControls"],
-		"slpPer": d["secondaryLossProbability"]
+		"slpPer": d["secondaryLossProbability"],
+        "meta": d
 	}
 
 # translate short names to long names
 def translate_to_long(d):
-    return {
-        "contactFrequencyAvoidanceInherent": d["cfaInherent"],
-		"contactFrequencyAvoidanceControls": d["cfaControls"],
-		"probabilityOfActionDeterrenceInherent": d["padInherent"],
-		"probabilityOfActionDeterrenceControls": d["padControls"],
-		"threatCapability": d["tcOWASP"],
-		"resistanceStrengthVulnerabilityInherent": d["rsvInherent"],
-		"resistanceStrengthVulnerabilityControls": d["rsvControls"],
-		"primaryLossMagnitudeResponsiveInherent": d["plmrInherent"],
-		"primaryLossMagnitudeResponsiveControls": d["plmrControls"],
-		"secondaryLossMagnitudeResponsiveInherent": d["slmrInherent"],
-		"secondaryLossMagnitudeResponsiveControls": d["slmrControls"],
-		"secondaryLossProbability": d["slpPer"],
-        # new
-        "probabilityOfActionDeterrenceResidual": d["padResidual"],
-        "contactFrequencyAvoidanceResidual": d["cfaResidual"],
-        "primaryLossMagnitudeResponsiveResidual": d["plmrResidual"],
-        "secondaryLossMagnitudeResponsiveResidual": d["slmrResidual"],
-        "threatEventFrequencyInherent": d["tefInherent"],
-        "threatEventFrequencyResidual": d["tefResidual"],
-        "vulnerabilityInherent": d["vulInherent"],
-        "vulnerabilityResidual": d["vulResidual"],
-        "primaryLossEventFrequencyInherent": d["plefInherent"],
-        "primaryLossEventFrequencyResidual": d["plefResidual"],
-        "primaryRiskInherent": d["priskInherent"],
-        "primaryRiskResidual": d["priskResidual"],
-        "secondaryLossEventFrequencyInherent": d["sLEFInherent"],
-        "secondaryLossEventFrequencyResidual": d["sLEFResidual"],
-        "secondaryRiskInherent": d["sriskInherent"],
-        "secondaryRiskResidual": d["sriskResidual"],
-        "overallRiskInherent": d["ovrInherent"],
-        "overallRiskResidual": d["ovrResidual"]
-    }
+    short = d["meta"]
+    short["probabilityOfActionDeterrenceResidual"] = d["padResidual"]
+    short["contactFrequencyAvoidanceResidual"] = d["cfaResidual"]
+    short["primaryLossMagnitudeResponsiveResidual"] = d["plmrResidual"]
+    short["secondaryLossMagnitudeResponsiveResidual"] = d["slmrResidual"]
+    short["threatEventFrequencyInherent"] = d["tefInherent"]
+    short["threatEventFrequencyResidual"] = d["tefResidual"]
+    short["vulnerabilityInherent"] = d["vulInherent"]
+    short["vulnerabilityResidual"] = d["vulResidual"]
+    short["primaryLossEventFrequencyInherent"] = d["plefInherent"]
+    short["primaryLossEventFrequencyResidual"] = d["plefResidual"]
+    short["primaryRiskInherent"] = d["priskInherent"]
+    short["primaryRiskResidual"] = d["priskResidual"]
+    short["secondaryLossEventFrequencyInherent"] = d["sLEFInherent"]
+    short["secondaryLossEventFrequencyResidual"] = d["sLEFResidual"]
+    short["secondaryRiskInherent"] = d["sriskInherent"]
+    short["secondaryRiskResidual"] = d["sriskResidual"]
+    short["overallRiskInherent"] = d["ovrInherent"]
+    short["overallRiskResidual"] = d["ovrResidual"]
+    return short
 
 #___________________________________________________________________________________________________________________________________#
 

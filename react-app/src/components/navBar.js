@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
 import {Navbar, Nav} from 'react-bootstrap';
+import Cookies from 'js-cookie';
 
 export class Navigation extends Component {
+  logout = () => {
+    Cookies.remove("username");
+    Cookies.remove("password");
+    Cookies.remove("uid");
+    Cookies.remove("role");
+    window.location.reload();
+  }
   render(){
     return (
       <Navbar bg="dark" expand="lg">
@@ -10,8 +18,7 @@ export class Navigation extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav>
-
-          <NavLink className="d-inline p-2 bg-dark text-white" to="/">Login</NavLink>
+          <NavLink className="d-inline p-2 bg-dark text-white" to="/" onClick={this.logout}>Logout</NavLink>
           <NavLink className="d-inline p-2 bg-dark text-white" to="/dashboard">Dashboard</NavLink>
           <NavLink className="d-inline p-2 bg-dark text-white" to="/outcome">Outcomes</NavLink>
           <NavLink className="d-inline p-2 bg-dark text-white" to="/matrix">Matricies</NavLink>

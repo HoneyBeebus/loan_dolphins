@@ -17,6 +17,26 @@ def dict_factory(cursor, row):
 		d[col[0]] = row[i]
 	return d
 
+@app.route('/login', methods=["POST"])
+def basic_login():
+	# this is a very basic login check
+	# eventually should be replaced with real authentication
+
+	login_data = request.get_json()
+
+	conn = sqlite3.connect("../../data.sqlite")
+	c = conn.cursor()
+
+	c.execute(
+		"SELECT uid, role FROM Users WHERE username=? AND password=?;",
+		(login_data["username"], login_data["password"])
+	)
+	user = c.fetchone()
+	if user != None:
+		return {"success": True, "uid": user[0], "role": user[1]}
+	else:
+		return {"success": False}
+
 @app.route('/analyses')
 def get_analyses():
 	# connect to database
@@ -96,7 +116,7 @@ def commit_results():
 		"notes) "
 		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
 		(
-			aid, 1, "temporary scenario", datetime.datetime.now(),
+			aid, analysis_data["uid"], "temporary scenario", datetime.datetime.now(),
 			analysis_data["overallRiskInherent"],
 			analysis_data["overallRiskResidual"],
 			analysis_data["primaryRiskInherent"],
