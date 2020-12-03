@@ -22,6 +22,7 @@ CREATE TABLE Analyses (
 	potentialLossMagnitude INTEGER,
 	resistanceStrengthVulnerabilityInherent INTEGER,
 	resistanceStrengthVulnerabilityControls INTEGER,
+	resistanceStrengthVulnerabilityResidual INTEGER,
 	probabilityOfActionDeterrenceInherent INTEGER,
 	probabilityOfActionDeterrenceControls INTEGER,
 	probabilityOfActionDeterrenceResidual INTEGER,
