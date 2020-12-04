@@ -37,7 +37,11 @@ def basic_login():
 	else:
 		return {"success": False}
 
-@app.route('/analyses')
+def add_username(analysis, c):
+	c.execute("SELECT username FROM Users WHERE UID = ?;", (analysis["UID"],))
+	analysis["analyst"] = c.fetchone()["username"]
+
+@app.route('/getAllAnalyses')
 def get_analyses():
 	# connect to database
 	conn = sqlite3.connect("../../data.sqlite")
@@ -48,7 +52,23 @@ def get_analyses():
 
 	c.execute("SELECT * FROM Analyses;")
 	analyses = c.fetchall()
+	for analysis in analyses:
+		add_username(analysis, c)
 	return {"analyses": analyses}
+
+@app.route('/getAnalysis/<int:AID>')
+def get_analysis(AID):
+	conn = sqlite3.connect("../../data.sqlite")
+	conn.row_factory = dict_factory
+	c = conn.cursor()
+
+	c.execute("SELECT * FROM Analyses WHERE AID = ?;", (AID,))
+	analysis = c.fetchone()
+	if analysis:
+		add_username(analysis, c)
+		return analysis
+	else:
+		return "Not found", 404
 
 @app.route('/runAnalysis',methods=["POST"])
 def run_analysis():
@@ -117,7 +137,7 @@ def commit_results():
 		"notes) "
 		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
 		(
-			aid, analysis_data["uid"], "temporary scenario", datetime.datetime.now(),
+			aid, analysis_data["uid"], "temporary scenario", str(datetime.datetime.now()).split(" ")[0],
 			analysis_data["overallRiskInherent"],
 			analysis_data["overallRiskResidual"],
 			analysis_data["primaryRiskInherent"],

@@ -6,6 +6,7 @@ import OutcomePage from './pages/OutcomePage'
 import ExamplePage from './pages/ExamplePage'
 import MatrixPage from './pages/MatrixPage'
 import RiskPage from './pages/RiskPage'
+import ViewPage from './pages/ViewPage'
 import {Navigation} from './components/navBar'
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
@@ -27,6 +28,7 @@ function App() {
           <Route path ="/outcome" exact component={OutcomePage}/>
           <Route path="/matrix" exact component={MatrixPage}/>
           <Route path="/risk" exact component={RiskPage}/>
+          <Route path="/view/:AID" component={ViewPage}/>
         </Switch>
       </BasicLoginWrapper>
     </div>
