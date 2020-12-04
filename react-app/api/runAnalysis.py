@@ -100,7 +100,7 @@ def residual(d):
         if d["cfaControls"] == 1 or d["cfaControls"] == 2:
             d["cfaResidual"] = 4
         elif d["cfaControls"] == 3:
-            d["cfaResdidual"] = 3
+            d["cfaResidual"] = 3
         elif d["cfaControls"] == 4:
             d["cfaResidual"] = 2
         elif d["cfaControls"] == 5:
@@ -135,7 +135,7 @@ def residual(d):
         if d["plmrControls"] == 1 or d["plmrControls"] == 2:
             d["plmrResidual"] = 4
         elif d["plmrControls"] == 3:
-            d["plmrResdidual"] = 3
+            d["plmrResidual"] = 3
         elif d["plmrControls"] == 4:
             d["plmrResidual"] = 2
         elif d["plmrControls"] == 5:
