@@ -14,7 +14,7 @@ export class Navigation extends Component {
   render(){
     return (
       <Navbar bg="dark" expand="lg">
-        <img src="oportun_logo_circle.png" width="45" height="20"alt="Logo" />
+        <img src="/oportun_logo_circle.png" width="45" height="20"alt="Logo" />
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Nav id="basic-navbar-nav">
           <NavLink className="d-inline p-2 bg-dark text-white" to="/dashboard">Dashboard</NavLink>

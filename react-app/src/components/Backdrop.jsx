@@ -25,7 +25,7 @@ export default function SimpleBackdrop() {
   return (
     <div>
       <Backdrop className={classes.backdrop} open={open} onLoad={() => {window.setTimeout(handleToggle, 1000);}}>
-        <img class='App-logo' src='oportun_logo_circle.png' />
+        <img class='App-logo' src='/oportun_logo_circle.png' />
       </Backdrop>
     </div>
   );
