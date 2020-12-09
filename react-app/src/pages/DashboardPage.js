@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
+import Data from '../components/Data.jsx';
 import './DashboardPage.css';
 
 
@@ -31,12 +32,18 @@ class DashboardPage extends React.Component {
 		renderCell: params => {
 			return <ViewButton value={params.value} onClick={this.viewTree}/>
 		}},
-		{field: "overallRiskResidual", headerName: "Overall Residual Risk", width: 200},
-		{field: "primaryRiskResidual", headerName: "Primary Residual Risk", width: 200},
-		{field: "secondaryRiskResidual", headerName: "Secondary Residual Risk", width: 200},
-		{field: "potentialLossMagnitude", headerName: "Potential Loss Magnitude", width: 200},
-		{field: "primaryLossMagnitudeResponsiveResidual", headerName: "Primary Loss Magnitude", width: 200},
-		{field: "secondaryLossMagnitudeResponsiveResidual", headerName: "Secondary Loss Magnitude", width: 220}
+		{field: "overallRiskResidual", headerName: "Overall Residual Risk", width: 200,
+		renderCell: params => <Data value={params.value} />},
+		{field: "primaryRiskResidual", headerName: "Primary Residual Risk", width: 200,
+		renderCell: params => <Data value={params.value} />},
+		{field: "secondaryRiskResidual", headerName: "Secondary Residual Risk", width: 200,
+		renderCell: params => <Data value={params.value} />},
+		{field: "potentialLossMagnitude", headerName: "Potential Loss Magnitude", width: 200,
+		renderCell: params => <Data value={params.value} type="LossMagnitude" />},
+		{field: "primaryLossMagnitudeResponsiveResidual", headerName: "Primary Loss Magnitude", width: 200,
+		renderCell: params => <Data value={params.value} type="LossMagnitude" />},
+		{field: "secondaryLossMagnitudeResponsiveResidual", headerName: "Secondary Loss Magnitude", width: 220,
+		renderCell: params => <Data value={params.value} type="LossMagnitude" />}
 	];
 
 	componentDidMount() {

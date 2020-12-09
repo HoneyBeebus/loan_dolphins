@@ -28,10 +28,10 @@
 		"5": "Security penetration skills"
 	},
 	"ResistanceStrength": {
-		"1": "Only protects against bottom 2% of avg threat population",
-		"2": "Only protects against bottom 16% of avg threat population",
+		"1": "Protects vs bottom 2% of avg threat pop.",
+		"2": "Protects vs bottom 16% of avg threat pop.",
 		"3": "Protects against avg threat agent",
-		"4": "Protects against all but top 16% of avg threat population",
-		"5": "Protects against all but top 2% of avg threat population"
+		"4": "Protects vs up to top 16% of avg threat pop.",
+		"5": "Protects vs up to top 2% of avg threat pop."
 	}
 }
