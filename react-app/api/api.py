@@ -137,7 +137,7 @@ def commit_results():
 		"notes) "
 		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
 		(
-			aid, analysis_data["uid"], "temporary scenario", str(datetime.datetime.now()).split(" ")[0],
+			aid, analysis_data["uid"], analysis_data["lossScenario"], str(datetime.datetime.now()).split(" ")[0],
 			analysis_data["overallRiskInherent"],
 			analysis_data["overallRiskResidual"],
 			analysis_data["primaryRiskInherent"],
