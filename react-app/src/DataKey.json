@@ -1,0 +1,37 @@
+{
+	"LossMagnitude": {
+		"1": "< $9,999",
+		"2": "$10,000 to $99,999",
+		"3": "$100,000 to $999,999",
+		"4": "1,000,000 to $9,999,999",
+		"5": "> $10,000,000"
+	},
+	"Probability": {
+		"1": "0% to 10%",
+		"2": "10% to 30%",
+		"3": "30% to 70%",
+		"4": "70% to 90%",
+		"5": "90% to 100%"
+	},
+	"ContactFrequency": {
+		"1": "< 0.1 times per year",
+		"2": "Between 0.1 and 1 time per year",
+		"3": "Between 1 and 10 time per year",
+		"4": "Between 10 and 100 time per year",
+		"5": "> 100 time per year"
+	},
+	"ThreatCapability": {
+		"1": "No technical skills",
+		"2": "Some technical skills",
+		"3": "Advanced computer user",
+		"4": "Network and programming skills",
+		"5": "Security penetration skills"
+	},
+	"ResistanceStrength": {
+		"1": "Only protects against bottom 2% of avg threat population",
+		"2": "Only protects against bottom 16% of avg threat population",
+		"3": "Protects against avg threat agent",
+		"4": "Protects against all but top 16% of avg threat population",
+		"5": "Protects against all but top 2% of avg threat population"
+	}
+}

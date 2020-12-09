@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, ButtonGroup, Select, MenuItem, FormControl, InputLabel, makeStyles, TextField} from '@material-ui/core';
+import { Grid, FormControl, TextField} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import DataDropdown from '../components/DataDropdown';
 import Cookies from 'js-cookie';
 
 
@@ -22,6 +23,8 @@ class RiskPage extends React.Component {
     }
 
     emptyData = {
+        lossScenario: '',
+        notes: '',
         contactFrequencyAvoidanceInherent: '',
         contactFrequencyAvoidanceControls: '',
         probabilityOfActionDeterrenceInherent: '',
@@ -77,186 +80,139 @@ class RiskPage extends React.Component {
                     <Grid item xs ={2}/>
                     <Grid item xs = {8}>
                         <Grid container>
+                            <Grid item xs={6}>
+                                <TextField variant = "outlined" nultiline label="Loss Scenario"
+                                    value={this.state.analysisData.lossScenario}
+                                    onChange={(e) => this.setInput("lossScenario", e.target.value)}
+                                />
+                            </Grid>
+                            <Grid item xs={6}>
+                                <TextField variant = "outlined" multiline label = "Notes"
+                                    value={this.state.analysisData.notes}
+                                    onChange={(e) => this.setInput("notes", e.target.value)}
+                                />
+                            </Grid>
+                        </Grid>
+                        <br></br>
+                        <Grid container>
                              <Grid item xs = {6}>Contact Frequency Avoidance</Grid>
                              <Grid item xs = {6}>Probability of Action Deterrence</Grid>
                             <Grid item xs = {6}><FormControl>
-                                    <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.contactFrequencyAvoidanceInherent}
-                                    onChange = {(e) => this.setInput("contactFrequencyAvoidanceInherent", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="ContactFrequency"
+                                    label="Inherent"
+                                    value={this.state.analysisData.contactFrequencyAvoidanceInherent}
+                                    onChange={(e) => this.setInput("contactFrequencyAvoidanceInherent", e.target.value)}
+                                />
                                 </FormControl>
                                 <FormControl>
-                                <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.contactFrequencyAvoidanceControls}
-                                    onChange = {(e) => this.setInput("contactFrequencyAvoidanceControls", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="ContactFrequency"
+                                    label="Controls"
+                                    value={this.state.analysisData.contactFrequencyAvoidanceControls}
+                                    onChange={(e) => this.setInput("contactFrequencyAvoidanceControls", e.target.value)}
+                                />
                                 </FormControl>
                         </Grid>
                             <Grid item xs = {6}><FormControl>
-                                    <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.probabilityOfActionDeterrenceInherent}
-                                    onChange = {(e) => this.setInput("probabilityOfActionDeterrenceInherent", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="Probability"
+                                    label="Inherent"
+                                    value={this.state.analysisData.probabilityOfActionDeterrenceInherent}
+                                    onChange={(e) => this.setInput("probabilityOfActionDeterrenceInherent", e.target.value)}
+                                />
                                 </FormControl>
                                 <FormControl>
-                                <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.probabilityOfActionDeterrenceControls}
-                                    onChange = {(e) => this.setInput("probabilityOfActionDeterrenceControls", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="Probability"
+                                    label="Controls"
+                                    value={this.state.analysisData.probabilityOfActionDeterrenceControls}
+                                    onChange={(e) => this.setInput("probabilityOfActionDeterrenceControls", e.target.value)}
+                                />
                                 </FormControl>
                                 </Grid>
                         <Grid item xs = {6}>Threat Capability</Grid>
                         <Grid item xs = {6}>Resistance Strength Vulnerability</Grid>
                         <Grid item xs = {6}><FormControl>
-                                <InputLabel>OWASP</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.threatCapability}
-                                    onChange = {(e) => this.setInput("threatCapability", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="ThreatCapability"
+                                    label="OWASP"
+                                    value={this.state.analysisData.threatCapability}
+                                    onChange={(e) => this.setInput("threatCapability", e.target.value)}
+                                />
                                 </FormControl></Grid>
                         <Grid item xs = {6}><FormControl>
-                                    <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.resistanceStrengthVulnerabilityInherent}
-                                    onChange = {(e) => this.setInput("resistanceStrengthVulnerabilityInherent", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="ResistanceStrength"
+                                    label="Inherent"
+                                    value={this.state.analysisData.resistanceStrengthVulnerabilityInherent}
+                                    onChange={(e) => this.setInput("resistanceStrengthVulnerabilityInherent", e.target.value)}
+                                />
                                 </FormControl>
                                 <FormControl>
-                                <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.resistanceStrengthVulnerabilityControls}
-                                    onChange = {(e) => this.setInput("resistanceStrengthVulnerabilityControls", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="ResistanceStrength"
+                                    label="Controls"
+                                    value={this.state.analysisData.resistanceStrengthVulnerabilityControls}
+                                    onChange={(e) => this.setInput("resistanceStrengthVulnerabilityControls", e.target.value)}
+                                />
                                 </FormControl>
                                 </Grid>
                         <Grid item xs = {6}>Primary Loss Magnitude Responsive</Grid>
                         <Grid item xs = {6}>Secondary Loss Magnitude Responsive</Grid>
                         <Grid item xs = {6}><FormControl>
-                                    <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.primaryLossMagnitudeResponsiveInherent}
-                                    onChange = {(e) => this.setInput("primaryLossMagnitudeResponsiveInherent", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="LossMagnitude"
+                                    label="Inherent"
+                                    value={this.state.analysisData.primaryLossMagnitudeResponsiveInherent}
+                                    onChange={(e) => this.setInput("primaryLossMagnitudeResponsiveInherent", e.target.value)}
+                                />
                                 </FormControl>
                                 <FormControl>
-                                <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.primaryLossMagnitudeResponsiveControls}
-                                    onChange = {(e) => this.setInput("primaryLossMagnitudeResponsiveControls", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="LossMagnitude"
+                                    label="Controls"
+                                    value={this.state.analysisData.primaryLossMagnitudeResponsiveControls}
+                                    onChange={(e) => this.setInput("primaryLossMagnitudeResponsiveControls", e.target.value)}
+                                />
                                 </FormControl>
                                 </Grid>
                         <Grid item xs = {6}><FormControl>
-                                    <InputLabel>Inherent</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.secondaryLossMagnitudeResponsiveInherent}
-                                    onChange = {(e) => this.setInput("secondaryLossMagnitudeResponsiveInherent", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="LossMagnitude"
+                                    label="Inherent"
+                                    value={this.state.analysisData.secondaryLossMagnitudeResponsiveInherent}
+                                    onChange={(e) => this.setInput("secondaryLossMagnitudeResponsiveInherent", e.target.value)}
+                                />
                                 </FormControl>
                                 <FormControl>
-                                <InputLabel>Controls</InputLabel>
-                                <Select variant = "outlined"
-                                    value = {this.state.analysisData.secondaryLossMagnitudeResponsiveControls}
-                                    onChange = {(e) => this.setInput("secondaryLossMagnitudeResponsiveControls", e.target.value)}
-                                >
-                                <MenuItem value = {1}>one</MenuItem>
-                                <MenuItem value = {2}>two</MenuItem>
-                                <MenuItem value = {3}>three</MenuItem>
-                                <MenuItem value = {4}>four</MenuItem>
-                                <MenuItem value = {5}>five</MenuItem>
-                                </Select>
+                                <DataDropdown
+                                    type="LossMagnitude"
+                                    label="Controls"
+                                    value={this.state.analysisData.secondaryLossMagnitudeResponsiveControls}
+                                    onChange={(e) => this.setInput("secondaryLossMagnitudeResponsiveControls", e.target.value)}
+                                />
                                 </FormControl>
                                 </Grid>
-                        <Grid item xs = {6}>Secondary Loss Probability</Grid>
                         <Grid item xs = {6}></Grid>
+                        <Grid item xs = {6}>Secondary Loss Probability</Grid>
+                         <Grid item xs = {6}></Grid>
                         <Grid item xs = {6}>
-                            <TextField id="outlined-basic" variant="outlined"
+                            <DataDropdown
+                                type="Probability"
                                 label="Percent %"
-                                type="number"
                                 value={this.state.analysisData.secondaryLossProbability}
-                                onChange = {(e) => this.setInput("secondaryLossProbability", Math.min(Math.max(0,e.target.value),100))}
+                                onChange={(e) => this.setInput("secondaryLossProbability", e.target.value)}
                             />
                         </Grid>
-                         <Grid item xs = {6}>
-                             <TextField variant = "outlined" multiline label = "Notes"
-                                value = {this.state.analysisData.notes}
-                                onChange={(e) => this.setInput("notes", e.target.value)}
-                             />
-                         </Grid>
                         <Grid><Button disabled></Button></Grid>
                         </Grid>
                     </Grid>
                         <Grid xs = {4}></Grid>
                          <Grid xs = {2}>
                          <Button variant="contained" onClick={this.reset}>Reset</Button>
-                         {/* <Button variant="contained" onClick={this.runAnalysis}>Run Analysis</Button> */}
                          </Grid>
                          <Grid><Button variant="contained" onClick={this.runAnalysis}>Run Analysis</Button></Grid>
-                    <Grid item xs ={2}/>
                     </Grid>
               </Grid>
         );
