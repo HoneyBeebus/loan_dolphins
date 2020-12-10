@@ -20,11 +20,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ControlledOpenSelect(props) {
   const classes = useStyles();
-  const [source, setSource] = React.useState(props.value);
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    setSource(event.target.value);
     if (typeof props.onChange == "function") props.onChange(event);
   };
 
@@ -46,7 +44,7 @@ export default function ControlledOpenSelect(props) {
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={source}
+          value={props.value}
           onChange={handleChange}
         >
           {props.children}
